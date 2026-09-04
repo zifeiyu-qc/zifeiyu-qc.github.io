@@ -3,14 +3,13 @@ import { zh } from '../i18n/zh';
 
 export const languages = ['en', 'zh'] as const;
 export type Lang = (typeof languages)[number];
-export type PageKey = 'home' | 'projects' | 'learning' | 'publications' | 'about';
+export type PageKey = 'home' | 'projects' | 'learning' | 'publications';
 
 export const pageSlugs: Record<PageKey, string> = {
   home: '',
   projects: 'projects',
   learning: 'learning',
   publications: 'publications',
-  about: 'about',
 };
 
 export const dictionaries = { en, zh };
