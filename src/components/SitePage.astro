@@ -17,12 +17,14 @@ const metadata = page === 'home' ? t.home : t[page];
         <div class="hero-copy">
           <p class="eyebrow"><span></span> {t.home.openToWork}</p>
           <h1>{t.home.name}</h1>
+          <p class="panel-label">{t.home.identity}</p>
           <p class="hero-focus">{t.home.focus.map((item, index) => <>{index > 0 && <span>/</span>}{item}</>)}</p>
           <p class="hero-intro">{t.home.intro}</p>
           <div class="button-group" aria-label={t.home.profileLinks}>
             <a class="button primary" href="https://github.com/zifeiyu-qc">GitHub</a>
             <a class="button" href="#">{t.home.resume}</a>
             <a class="button" href="mailto:your-email@example.com">{t.home.email}</a>
+            <a class="button" href={getLocalizedPath(lang, 'projects')}>{t.home.projectsButton}</a>
           </div>
         </div>
         <aside class="research-panel" aria-label={t.home.researchFocusAria}>
@@ -36,7 +38,7 @@ const metadata = page === 'home' ? t.home : t[page];
       </section>
       <section class="section container">
         <div class="section-heading"><div><p class="eyebrow">{t.home.selectedWork}</p><h2>{t.home.featuredProjects}</h2></div><a class="text-link" href={getLocalizedPath(lang, 'projects')}>{t.home.allProjects} <span aria-hidden="true">→</span></a></div>
-        <div class="card-grid">{t.projects.items.slice(0, 2).map((project) => <ProjectCard lang={lang} featured {...project} />)}</div>
+        <div class="card-grid featured-grid">{t.projects.items.slice(0, 3).map((project) => <ProjectCard lang={lang} featured {...project} />)}</div>
       </section>
       <section class="section container">
         <div class="section-heading"><div><p class="eyebrow">{t.home.knowledgeLog}</p><h2>{t.home.recentLearning}</h2></div><a class="text-link" href={getLocalizedPath(lang, 'learning')}>{t.home.allNotes} <span aria-hidden="true">→</span></a></div>
