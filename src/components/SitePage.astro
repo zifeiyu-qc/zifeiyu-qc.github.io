@@ -15,11 +15,23 @@ const metadata = page === 'home' ? t.home : t[page];
     <>
       <section class="hero container">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> {t.home.openToWork}</p>
-          <h1>{t.home.name}</h1>
-          <p class="panel-label">{t.home.identity}</p>
-          <p class="hero-focus">{t.home.focus.map((item, index) => <>{index > 0 && <span>/</span>}{item}</>)}</p>
-          <p class="hero-intro">{t.home.intro}</p>
+          <div class="hero-heading-group">
+            <h1>{t.home.name}</h1>
+            <div class="hero-education">
+              <span class="education-period">{t.home.educationPeriod}</span>
+              <div>
+                <p class="education-school">{t.home.educationSchool}</p>
+                <p class="education-role">{t.home.educationRole}</p>
+              </div>
+            </div>
+          </div>
+          <ul class="hero-focus-list" aria-label={t.home.researchFocusAria}>
+            {t.home.focus.map((item) => <li>{item}</li>)}
+          </ul>
+          <div class="hero-intro">
+            <p class="hero-intro-lead">{t.home.introLead}</p>
+            <p>{t.home.introDetails}</p>
+          </div>
           <div class="button-group" aria-label={t.home.profileLinks}>
             <a class="button" href="https://github.com/zifeiyu-qc" target="_blank" rel="noopener noreferrer">GitHub</a>
             <button
@@ -34,7 +46,7 @@ const metadata = page === 'home' ? t.home : t[page];
           </div>
         </div>
         <aside class="research-panel" aria-label={t.home.researchFocusAria}>
-          <p class="panel-label">{t.home.researchFocus}</p>
+          <p class="panel-label research-panel-title">{t.home.researchFocus}</p>
           <div class="focus-visual" aria-hidden="true">
             <svg class="focus-path" viewBox="0 0 100 100" preserveAspectRatio="none">
               <polyline points="18,65 43,30 67,68 88,32"></polyline>
@@ -51,17 +63,33 @@ const metadata = page === 'home' ? t.home : t[page];
       </section>
       <section class="section container">
         <div class="section-heading"><div><h2>{t.home.recentLearning}</h2></div><a class="text-link" href={getLocalizedPath(lang, 'learning')}>{t.home.allNotes} <span aria-hidden="true">→</span></a></div>
-        <div class="card-grid">{t.learning.items.slice(0, 2).map((item) => <LearningCard lang={lang} {...item} date={t.home.comingSoon} />)}</div>
+        <div class="card-grid">{t.learning.items.slice(0, 2).map((item) => <LearningCard lang={lang} {...item} />)}</div>
       </section>
     </>
   )}
 
   {page === 'projects' && (
-    <><section class="page-intro container"><h1>{t.projects.heading}</h1><p>{t.projects.intro}</p></section><section class="section container" aria-label={t.projects.listAria}><div class="card-grid three-column">{t.projects.items.map((project) => <ProjectCard lang={lang} {...project} />)}</div></section></>
+    <><section class="page-intro container"><h1>{t.projects.heading}</h1><p>{t.projects.intro}</p></section><section class="section container" aria-label={t.projects.listAria}><div class="card-grid project-showcase-grid">{t.projects.items.map((project) => <ProjectCard lang={lang} showMedia {...project} />)}</div></section></>
   )}
 
   {page === 'learning' && (
-    <><section class="page-intro container"><h1>{t.learning.heading}</h1><p>{t.learning.intro}</p></section><section class="section container" aria-label={t.learning.categoriesAria}><div class="card-grid">{t.learning.items.map((item) => <LearningCard lang={lang} {...item} date={t.learning.comingSoon} />)}</div></section></>
+    <>
+      <section class="page-intro container">
+        <h1>{t.learning.heading}</h1>
+        <p>{t.learning.intro}</p>
+      </section>
+      <section class="section container" aria-label={t.learning.categoriesAria}>
+        <div class="learning-goal-tabs" role="tablist" aria-label={t.learning.goalsAria} data-learning-tabs>
+          <button class="learning-goal-tab" id="learning-tab-all" type="button" role="tab" aria-selected="true" aria-controls="learning-timeline" data-learning-tab="all">{t.learning.allGoals}</button>
+          {t.learning.goals.map((goal) => (
+            <button class="learning-goal-tab" id={`learning-tab-${goal.id}`} type="button" role="tab" aria-selected="false" aria-controls="learning-timeline" tabindex="-1" data-learning-tab={goal.id}>{goal.label}</button>
+          ))}
+        </div>
+        <div class="learning-list" id="learning-timeline" role="tabpanel" aria-labelledby="learning-tab-all" data-active-goal="all">
+          {t.learning.items.map((item) => <LearningCard lang={lang} journal {...item} />)}
+        </div>
+      </section>
+    </>
   )}
 
   {page === 'publications' && (
@@ -110,4 +138,42 @@ const metadata = page === 'home' ? t.home : t[page];
       hideTimer = window.setTimeout(() => { toast.hidden = true; }, 3000);
     });
   });
+
+  const learningTabs = document.querySelector<HTMLElement>('[data-learning-tabs]');
+  const learningTimeline = document.querySelector<HTMLElement>('#learning-timeline');
+
+  if (learningTabs && learningTimeline) {
+    const tabs = [...learningTabs.querySelectorAll<HTMLButtonElement>('[data-learning-tab]')];
+    const entries = [...learningTimeline.querySelectorAll<HTMLElement>('[data-learning-entry]')];
+
+    const selectGoal = (selectedTab: HTMLButtonElement) => {
+      const goal = selectedTab.dataset.learningTab ?? 'all';
+      tabs.forEach((tab) => {
+        const selected = tab === selectedTab;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      entries.forEach((entry) => {
+        entry.hidden = goal !== 'all' && entry.dataset.learningEntry !== goal;
+      });
+      learningTimeline.dataset.activeGoal = goal;
+      learningTimeline.setAttribute('aria-labelledby', selectedTab.id);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectGoal(tab));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+
+        event.preventDefault();
+        tabs[nextIndex].focus();
+        selectGoal(tabs[nextIndex]);
+      });
+    });
+  }
 </script>

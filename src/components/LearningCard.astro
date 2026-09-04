@@ -6,20 +6,54 @@ interface Props {
   category: string;
   title: string;
   summary: string;
-  date?: string;
+  date: string;
+  dateTime?: string;
   href?: string;
+  image?: string;
+  video?: string;
+  poster?: string;
+  mediaAlt?: string;
+  journal?: boolean;
+  goal?: string;
 }
 
-const { lang, category, title, summary, date, href } = Astro.props;
+const {
+  lang,
+  category,
+  title,
+  summary,
+  date,
+  dateTime,
+  href,
+  image,
+  video,
+  poster,
+  mediaAlt,
+  journal = false,
+  goal,
+} = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<article class="card learning-card">
-  <div class="card-heading">
-    <span class="card-kicker">{category}</span>
-    {date && <time>{date}</time>}
+<article class:list={['card', 'learning-card', { 'journal-entry': journal }] } data-learning-entry={journal ? goal : undefined}>
+  {journal && (
+    <div class="learning-date">
+      <time datetime={dateTime}>{date}</time>
+    </div>
+  )}
+  <div class="learning-entry-body">
+    <div class="card-heading">
+      <span class="card-kicker">{category}</span>
+      {!journal && <time datetime={dateTime}>{date}</time>}
+    </div>
+    <h3>{title}</h3>
+    <p>{summary}</p>
+    {journal && image && <img class="learning-media" src={image} alt={mediaAlt ?? title} loading="lazy" />}
+    {journal && video && (
+      <video class="learning-media" controls preload="metadata" playsinline poster={poster} aria-label={mediaAlt ?? title}>
+        <source src={video} type="video/mp4" />
+      </video>
+    )}
+    {href && <a class="card-link" href={href}>{t.common.readNote} <span aria-hidden="true">→</span></a>}
   </div>
-  <h3>{title}</h3>
-  <p>{summary}</p>
-  {href && <a class="card-link" href={href}>{t.common.readNote} <span aria-hidden="true">→</span></a>}
 </article>

@@ -8,17 +8,44 @@ interface Props {
   tags?: string[];
   href?: string;
   featured?: boolean;
+  video?: string;
+  poster?: string;
+  mediaLabel?: string;
+  mediaPlaceholder?: string;
+  showMedia?: boolean;
 }
 
-const { lang, title, description, tags = [], href, featured = false } = Astro.props;
+const {
+  lang,
+  title,
+  description,
+  tags = [],
+  href,
+  featured = false,
+  video,
+  poster,
+  mediaLabel,
+  mediaPlaceholder,
+  showMedia = false,
+} = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<article class:list={['card', 'project-card', { featured }] }>
+<article class:list={['card', 'project-card', { featured, 'has-media': showMedia }] }>
   <div class="card-heading">
     <span class="card-kicker">{featured ? t.common.featuredProject : t.common.project}</span>
     <span class="status-dot" aria-label={t.common.inProgress}></span>
   </div>
+  {showMedia && video && (
+    <video class="project-media" controls preload="metadata" playsinline poster={poster} aria-label={mediaLabel ?? title}>
+      <source src={video} type="video/mp4" />
+    </video>
+  )}
+  {showMedia && !video && mediaPlaceholder && (
+    <div class="project-media project-media-placeholder">
+      <span>{mediaPlaceholder}</span>
+    </div>
+  )}
   <h3>{title}</h3>
   <p>{description}</p>
   {tags.length > 0 && (
