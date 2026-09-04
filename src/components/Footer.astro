@@ -1,0 +1,13 @@
+---
+import { getTranslations, type Lang } from '../utils/i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; {new Date().getFullYear()} Qin Chen</p>
+    <p>{t.common.footer}</p>
+  </div>
+</footer>

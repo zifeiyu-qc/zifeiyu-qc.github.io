@@ -1,0 +1,42 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { getTranslations, type Lang, type PageKey } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+  page: PageKey;
+  title: string;
+  description?: string;
+}
+
+const {
+  lang,
+  page,
+  title,
+  description,
+} = Astro.props;
+const t = getTranslations(lang);
+---
+
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description ?? t.meta.defaultDescription} />
+    <meta name="theme-color" content="#f5f7f5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b100f" media="(prefers-color-scheme: dark)" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{t.common.skipToContent}</a>
+    <Header lang={lang} page={page} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

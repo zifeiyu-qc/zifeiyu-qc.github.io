@@ -1,0 +1,25 @@
+---
+import { getTranslations, type Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+  category: string;
+  title: string;
+  summary: string;
+  date?: string;
+  href?: string;
+}
+
+const { lang, category, title, summary, date, href } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<article class="card learning-card">
+  <div class="card-heading">
+    <span class="card-kicker">{category}</span>
+    {date && <time>{date}</time>}
+  </div>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  {href && <a class="card-link" href={href}>{t.common.readNote} <span aria-hidden="true">→</span></a>}
+</article>

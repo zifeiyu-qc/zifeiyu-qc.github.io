@@ -1,0 +1,30 @@
+---
+import { getTranslations, type Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  tags?: string[];
+  href?: string;
+  featured?: boolean;
+}
+
+const { lang, title, description, tags = [], href, featured = false } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<article class:list={['card', 'project-card', { featured }] }>
+  <div class="card-heading">
+    <span class="card-kicker">{featured ? t.common.featuredProject : t.common.project}</span>
+    <span class="status-dot" aria-label={t.common.inProgress}></span>
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {tags.length > 0 && (
+    <ul class="tag-list" aria-label={t.common.technologies}>
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  )}
+  {href && <a class="card-link" href={href}>{t.common.viewProject} <span aria-hidden="true">→</span></a>}
+</article>

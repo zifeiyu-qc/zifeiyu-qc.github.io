@@ -1,0 +1,16 @@
+---
+import SitePage from '../components/SitePage.astro';
+import { pageSlugs, type PageKey } from '../utils/i18n';
+
+export function getStaticPaths() {
+  return (Object.entries(pageSlugs) as [PageKey, string][]).map(([page, slug]) => ({
+    params: { slug: slug || undefined },
+    props: { page },
+  }));
+}
+
+interface Props { page: PageKey; }
+const { page } = Astro.props;
+---
+
+<SitePage lang="en" page={page} />

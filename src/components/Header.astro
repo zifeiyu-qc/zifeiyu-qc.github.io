@@ -1,0 +1,51 @@
+---
+import { getLocalizedPath, getTranslations, type Lang, type PageKey } from '../utils/i18n';
+
+interface Props { lang: Lang; page: PageKey; }
+
+const { lang, page } = Astro.props;
+const t = getTranslations(lang);
+const navigation: { page: PageKey; label: string }[] = [
+  { page: 'home', label: t.nav.home },
+  { page: 'projects', label: t.nav.projects },
+  { page: 'learning', label: t.nav.learning },
+  { page: 'publications', label: t.nav.publications },
+  { page: 'about', label: t.nav.about },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={getLocalizedPath(lang, 'home')} aria-label={t.common.homeAria}>
+      <span class="brand-mark" aria-hidden="true">QC</span>
+      <span>Qin Chen</span>
+    </a>
+
+    <div class="header-actions">
+    <nav aria-label={t.common.mainNavigation}>
+      <ul class="nav-list">
+        {navigation.map((item) => (
+          <li>
+            <a href={getLocalizedPath(lang, item.page)} aria-current={page === item.page ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="language-switcher" aria-label={t.common.languageSwitcher}>
+      <a href={getLocalizedPath('zh', page)} data-language="zh" lang="zh-CN" aria-current={lang === 'zh' ? 'true' : undefined}>中文</a>
+      <span aria-hidden="true">/</span>
+      <a href={getLocalizedPath('en', page)} data-language="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+    </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-language]').forEach((link) => {
+    link.addEventListener('click', () => {
+      localStorage.setItem('preferred-language', link.dataset.language ?? 'en');
+    });
+  });
+</script>
