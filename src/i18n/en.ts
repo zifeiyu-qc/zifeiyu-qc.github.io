@@ -98,7 +98,6 @@ export const en = {
     categoriesAria: 'Learning categories',
     goalsAria: 'Filter learning notes by goal',
     tracksLabel: 'Learning Tracks',
-    orderLabel: 'Timeline · Oldest to Newest',
     allGoals: 'All',
     allGoalsDescription: 'Follow my progress from foundational learning and simulation debugging to building hardware, with the questions, experiments, and lessons from each stage.',
     goals: [

@@ -97,7 +97,6 @@ export const zh = {
     categoriesAria: '学习分类',
     goalsAria: '按学习目标筛选笔记',
     tracksLabel: '学习路径',
-    orderLabel: '时间线 · 从旧到新',
     allGoals: '全部',
     allGoalsDescription: '按时间回顾从基础学习、仿真调试到实物制作的实践过程，展示每个阶段的问题、探索与进展。',
     goals: [
