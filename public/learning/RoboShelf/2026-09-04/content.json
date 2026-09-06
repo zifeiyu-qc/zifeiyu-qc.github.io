@@ -1,0 +1,15 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2026-09-04",
+  "zh": {
+    "category": "RoboShelf 项目",
+    "title": "RoboShelf 项目笔记",
+    "summary": "项目进展、技术难点与解决方案。"
+  },
+  "en": {
+    "category": "RoboShelf Project",
+    "title": "RoboShelf project notes",
+    "summary": "Project progress, technical challenges, and solutions."
+  },
+  "images": []
+}

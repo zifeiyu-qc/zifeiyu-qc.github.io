@@ -1,0 +1,44 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-08-15",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "二指夹爪设计",
+    "summary": "计划自主设计一款二指夹爪，用于人形机器人的抓取与操作任务。目前正在学习并使用 SolidWorks 进行建模，已完成部分简单零件的模型设计，逐步积累机械结构设计经验。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Designing a two-finger gripper",
+    "summary": "I plan to design a custom two-finger gripper for grasping and manipulation tasks on a humanoid robot. I am learning to model in SolidWorks and have completed models of several simple components, gradually building experience in mechanical design."
+  },
+  "images": [
+    {
+      "src": "images/baselink.png",
+      "alt": {
+        "zh": "二指夹爪的电机安装外壳模型",
+        "en": "Motor housing model for the two-finger gripper"
+      }
+    },
+    {
+      "src": "images/driver_dear.png",
+      "alt": {
+        "zh": "二指夹爪的 driver_dear 零件模型",
+        "en": "driver_dear component model for the two-finger gripper"
+      }
+    },
+    {
+      "src": "images/huagui.png",
+      "alt": {
+        "zh": "二指夹爪的滑轨模型",
+        "en": "Linear rail model for the two-finger gripper"
+      }
+    },
+    {
+      "src": "images/gripper_model.png",
+      "alt": {
+        "zh": "二指夹爪设计模型",
+        "en": "Two-finger gripper design model"
+      }
+    }
+  ]
+}

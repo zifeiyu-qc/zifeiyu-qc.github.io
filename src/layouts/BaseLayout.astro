@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import { getTranslations, type Lang, type PageKey } from '../utils/i18n';
+import { getLocalizedPath, getTranslations, type Lang, type PageKey } from '../utils/i18n';
 
 interface Props {
   lang: Lang;
@@ -18,18 +18,46 @@ const {
   description,
 } = Astro.props;
 const t = getTranslations(lang);
+const pageDescription = description ?? t.meta.defaultDescription;
+const canonicalURL = new URL(getLocalizedPath(lang, page), Astro.site ?? Astro.url.origin);
+const alternateEnURL = new URL(getLocalizedPath('en', page), Astro.site ?? Astro.url.origin);
+const alternateZhURL = new URL(getLocalizedPath('zh', page), Astro.site ?? Astro.url.origin);
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Qin Chen',
+  url: new URL('/', Astro.site ?? Astro.url.origin).href,
+  sameAs: ['https://github.com/zifeiyu-qc'],
+  affiliation: { '@type': 'CollegeOrUniversity', name: 'Chongqing University of Posts and Telecommunications' },
+  knowsAbout: ['Embodied AI', 'Vision-Language-Action', 'Robot Learning', 'Robotic Manipulation'],
+};
 ---
 
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description ?? t.meta.defaultDescription} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={alternateEnURL} />
+    <link rel="alternate" hreflang="zh-CN" href={alternateZhURL} />
+    <link rel="alternate" hreflang="x-default" href={alternateEnURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Qin Chen" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="theme-color" content="#f5f7f5" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0b100f" media="(prefers-color-scheme: dark)" />
     <title>{title}</title>
+    {page === 'home' && <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />}
   </head>
   <body>
     <a class="skip-link" href="#main-content">{t.common.skipToContent}</a>

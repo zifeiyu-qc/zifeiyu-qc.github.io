@@ -10,7 +10,13 @@ interface Props {
   dateTime?: string;
   href?: string;
   image?: string;
+  images?: readonly { src: string; alt: string }[];
   video?: string;
+  videos?: readonly { src: string; alt: string; poster?: string }[];
+  media?: readonly (
+    | { type: 'image'; src: string; alt: string }
+    | { type: 'video'; src: string; alt: string; poster?: string }
+  )[];
   poster?: string;
   mediaAlt?: string;
   journal?: boolean;
@@ -26,13 +32,22 @@ const {
   dateTime,
   href,
   image,
+  images,
   video,
+  videos,
+  media,
   poster,
   mediaAlt,
   journal = false,
   goal,
 } = Astro.props;
 const t = getTranslations(lang);
+const noteImages = images ?? (image ? [{ src: image, alt: mediaAlt ?? title }] : []);
+const noteVideos = videos ?? (video ? [{ src: video, alt: mediaAlt ?? title, poster }] : []);
+const noteMedia = media ?? [
+  ...noteImages.map((item) => ({ ...item, type: 'image' as const })),
+  ...noteVideos.map((item) => ({ ...item, type: 'video' as const })),
+];
 ---
 
 <article class:list={['card', 'learning-card', { 'journal-entry': journal }] } data-learning-entry={journal ? goal : undefined}>
@@ -48,11 +63,22 @@ const t = getTranslations(lang);
     </div>
     <h3>{title}</h3>
     <p>{summary}</p>
-    {journal && image && <img class="learning-media" src={image} alt={mediaAlt ?? title} loading="lazy" />}
-    {journal && video && (
-      <video class="learning-media" controls preload="metadata" playsinline poster={poster} aria-label={mediaAlt ?? title}>
-        <source src={video} type="video/mp4" />
-      </video>
+    {journal && noteMedia.length > 0 && (
+      <div class="learning-gallery">
+        {noteMedia.map((item) => item.type === 'image' ? (
+          <figure class="learning-media-item" tabindex="0">
+            <img class="learning-media" src={item.src} alt={item.alt} loading="lazy" />
+            <figcaption class="learning-media-caption">{item.alt}</figcaption>
+          </figure>
+        ) : (
+          <figure class="learning-media-item" tabindex="0">
+            <video class="learning-media" controls preload="metadata" playsinline poster={item.poster} aria-label={item.alt}>
+              <source src={item.src} type="video/mp4" />
+            </video>
+            <figcaption class="learning-media-caption">{item.alt}</figcaption>
+          </figure>
+        ))}
+      </div>
     )}
     {href && <a class="card-link" href={href}>{t.common.readNote} <span aria-hidden="true">→</span></a>}
   </div>

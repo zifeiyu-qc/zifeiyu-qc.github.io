@@ -1,0 +1,30 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-08-20",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "人形机器人全身控制系统仿真调试",
+    "summary": "首次接触人形机器人，我从在 MuJoCo 中运行和调试全身控制项目入手，学习相关的基本原理与实现方法。调试初期遇到了机器人无法稳定站立的问题：实验室已成功复现该项目的同学未遇到类似情况，GitHub 上也没有找到对应的问题记录。随后，我在 GitHub 提交问题，并根据收到的回复继续排查，最终解决了这一问题。这次经历让我积累了仿真调试、问题描述和借助开源社区反馈定位问题的经验。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Debugging humanoid whole-body control in simulation",
+    "summary": "For my first experience with humanoid robots, I started by running and debugging a whole-body control project in MuJoCo to learn its basic principles and implementation. Early on, the robot could not stand stably. Labmates who had reproduced the project had not encountered this behavior, and I could not find a matching report on GitHub. I then raised the issue on GitHub and used the responses to guide further investigation, eventually resolving it. This gave me practical experience in simulation debugging, describing technical problems, and using feedback from the open-source community to investigate issues."
+  },
+  "videos": [
+    {
+      "src": "videos/G1_simulate_issue.mp4",
+      "alt": {
+        "zh": "第一次在仿真部署时遇到问题",
+        "en": "Simulation testing video of the whole body control system for a humanoid robot"
+      }
+    },
+    {
+      "src": "videos/G1_simulate_solve.mp4",
+      "alt": {
+        "zh": "解决仿真部署问题",
+        "en": "Video demonstrating the solution to simulation deployment issues"
+      }
+    }
+  ]
+}

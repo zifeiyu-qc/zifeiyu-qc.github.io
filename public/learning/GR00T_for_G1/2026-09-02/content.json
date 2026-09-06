@@ -1,0 +1,64 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-09-02",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "夹爪制作完成并测试通过",
+    "summary": "经过多轮修改与迭代，完成了二指夹爪的设计、制作与组装，并进行了初步抓取测试。围绕结构稳定性和抓取需求，逐步调整零件设计、材料选择与连接方式。从 SolidWorks 建模到实物装配，再到电机供电与调试，这次实践让我对机械设计如何落地为可运行的装置有了更具体的认识，也积累了排查问题和改进设计的经验。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Two-finger gripper built and assembled",
+    "summary": "After several rounds of revision, I completed the design, fabrication, and assembly of the two-finger gripper and carried out initial grasping tests. I refined the components, material choices, and connections with structural stability and grasping requirements in mind. Working through SolidWorks modeling, physical assembly, motor power supply, and testing gave me a clearer understanding of how to turn a mechanical design into a working device, along with hands-on experience in troubleshooting and design iteration."
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/rubbish.jpg",
+      "alt": {
+        "zh": "迭代了很多个版本",
+        "en": "Parts from several iterations of the gripper design"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/gripper1.jpg",
+      "alt": {
+        "zh": "夹爪制作完成",
+        "en": "Completed two-finger gripper, first view"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/gripper2.jpg",
+      "alt": {
+        "zh": "夹爪制作完成",
+        "en": "Completed two-finger gripper, second view"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/gripper_test.mp4",
+      "alt": {
+        "zh": "二指夹爪初步抓取测试视频",
+        "en": "Initial grasping test of the two-finger gripper"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/gripper_on_G1_1.jpg",
+      "alt": {
+        "zh": "夹爪安装在 G1 上",
+        "en": "Two-finger gripper mounted on G1"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/gripper_on_G1_2.jpg",
+      "alt": {
+        "zh": "夹爪安装在 G1 上",
+        "en": "Two-finger gripper mounted on G1"
+      }
+    }
+  ]
+}

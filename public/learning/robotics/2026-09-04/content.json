@@ -1,0 +1,15 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-04",
+  "zh": {
+    "category": "机器人运动控制学",
+    "title": "机器人操作基础",
+    "summary": "运动学、控制、规划与实际部署笔记。"
+  },
+  "en": {
+    "category": "Robotics",
+    "title": "Robot manipulation foundations",
+    "summary": "Kinematics, control, planning, and practical deployment notes."
+  },
+  "images": []
+}

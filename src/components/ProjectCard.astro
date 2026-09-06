@@ -10,9 +10,14 @@ interface Props {
   featured?: boolean;
   video?: string;
   poster?: string;
+  previewImage?: string;
   mediaLabel?: string;
   mediaPlaceholder?: string;
   showMedia?: boolean;
+  preview?: boolean;
+  slug?: string;
+  status?: string;
+  statusTone?: 'complete' | 'ongoing';
 }
 
 const {
@@ -24,24 +29,35 @@ const {
   featured = false,
   video,
   poster,
+  previewImage,
   mediaLabel,
   mediaPlaceholder,
   showMedia = false,
+  preview = false,
+  slug,
+  status,
+  statusTone = 'ongoing',
 } = Astro.props;
 const t = getTranslations(lang);
+const cardPreview = previewImage ?? poster;
 ---
 
-<article class:list={['card', 'project-card', { featured, 'has-media': showMedia }] }>
+<article id={slug} class:list={['card', 'project-card', { featured, 'has-media': showMedia || preview }] }>
   <div class="card-heading">
     <span class="card-kicker">{featured ? t.common.featuredProject : t.common.project}</span>
-    <span class="status-dot" aria-label={t.common.inProgress}></span>
+    <span class:list={['project-status', `is-${statusTone}`]}>
+      <span aria-hidden="true"></span>{status ?? t.common.inProgress}
+    </span>
   </div>
+  {preview && cardPreview && (
+    <img class="project-media project-preview" src={cardPreview} alt={mediaLabel ?? title} width="1672" height="941" loading="lazy" />
+  )}
   {showMedia && video && (
     <video class="project-media" controls preload="metadata" playsinline poster={poster} aria-label={mediaLabel ?? title}>
       <source src={video} type="video/mp4" />
     </video>
   )}
-  {showMedia && !video && mediaPlaceholder && (
+  {(showMedia || preview) && !video && !cardPreview && mediaPlaceholder && (
     <div class="project-media project-media-placeholder">
       <span>{mediaPlaceholder}</span>
     </div>
