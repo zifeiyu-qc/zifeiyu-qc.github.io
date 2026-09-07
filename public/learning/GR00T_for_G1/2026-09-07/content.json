@@ -1,0 +1,48 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-09-07",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "WBC Sim-to-Real 真机部署与夹爪集成",
+    "summary": "完成了 Whole-Body Control（WBC）项目从仿真环境到宇树 G1 真机的初步部署，并开展 Sim-to-Real 测试，打通真机运行流程。在此基础上，将自制二指夹爪集成至 G1，并通过机器人板载控制系统完成夹爪驱动与功能测试，使后续任务能够直接调用夹爪。该阶段为控制参数调试、系统稳定性优化及 GR00T N1.7 相关实验奠定了硬件与控制基础。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "WBC Sim-to-Real Deployment and Gripper Integration on Unitree G1",
+    "summary": "I completed the initial deployment of a Whole-Body Control (WBC) project from simulation to a Unitree G1 and carried out Sim-to-Real testing, establishing the real-robot execution pipeline. I then integrated my custom two-finger gripper with the G1 and used its onboard control system to drive and functionally test the gripper, enabling it to be called directly in future tasks. This work establishes a hardware and control foundation for parameter tuning, system stability improvements, and future GR00T N1.7 experiments."
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/G1_1.jpg",
+      "alt": {
+        "zh": "自制二指夹爪安装在宇树 G1 机器人上",
+        "en": "Custom two-finger gripper mounted on a Unitree G1 robot"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/gripper_on_G1.jpg",
+      "alt": {
+        "zh": "自制二指夹爪安装在宇树 G1 机器人上",
+        "en": "Custom two-finger gripper mounted on a Unitree G1 robot"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/sim2real.mp4",
+      "alt": {
+        "zh": "WBC 项目在宇树 G1 真机上的 Sim-to-Real 测试",
+        "en": "Sim-to-Real test of the WBC project on a Unitree G1 robot"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/test_gripper_on_G1.mp4",
+      "alt": {
+        "zh": "通过 G1 板载控制系统驱动自制二指夹爪进行功能测试",
+        "en": "Functional test of the custom two-finger gripper driven through the Unitree G1 onboard control system"
+      }
+    }
+  ]
+}

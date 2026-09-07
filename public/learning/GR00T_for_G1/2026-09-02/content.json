@@ -43,22 +43,6 @@
         "zh": "二指夹爪初步抓取测试视频",
         "en": "Initial grasping test of the two-finger gripper"
       }
-    },
-    {
-      "type": "image",
-      "src": "images/gripper_on_G1_1.jpg",
-      "alt": {
-        "zh": "夹爪安装在 G1 上",
-        "en": "Two-finger gripper mounted on G1"
-      }
-    },
-    {
-      "type": "image",
-      "src": "images/gripper_on_G1_2.jpg",
-      "alt": {
-        "zh": "夹爪安装在 G1 上",
-        "en": "Two-finger gripper mounted on G1"
-      }
     }
   ]
 }
