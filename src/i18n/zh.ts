@@ -100,7 +100,7 @@ export const zh = {
     allGoals: '全部',
     allGoalsDescription: '按时间回顾从基础学习、仿真调试到实物制作的实践过程，展示每个阶段的问题、探索与进展。',
     goals: [
-      { id: 'robotics', label: '机器人运动控制学', description: '围绕运动学、控制与规划逐步建立机器人操作的基础知识，并记录面向实际部署的学习与实践。' },
+      { id: 'robotics', label: '机器人基础学', description: '围绕运动学、控制与规划逐步建立机器人操作的基础知识，并记录面向实际部署的学习与实践。' },
       { id: 'RoboShelf', label: 'RoboShelf 项目', description: '围绕超市货架取货场景，记录从网页下单到机械臂执行抓取的系统开发过程，以及其中的技术难点与解决思路。' },
       { id: 'GR00T N1.7 for G1', label: 'GR00T N1.7 for G1', description: '以探索 GR00T 在 G1 人形机器人上的应用为目标，记录夹爪设计制作、MuJoCo 全身控制仿真与调试等，逐步积累机器人操作实践经验。' },
     ],

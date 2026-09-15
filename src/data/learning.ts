@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 
 type Language = 'en' | 'zh';
 type LocalizedText = Record<Language, string>;
+type Summary = string | string[];
 interface Media {
   src: string;
   alt: LocalizedText;
@@ -14,8 +15,8 @@ type OrderedMedia =
 interface LearningContent {
   goal: string;
   dateTime: string;
-  zh: { category: string; title: string; summary: string };
-  en: { category: string; title: string; summary: string };
+  zh: { category: string; title: string; summary: Summary };
+  en: { category: string; title: string; summary: Summary };
   images?: Media[];
   video?: Video | Video[];
   videos?: Video[];
@@ -52,7 +53,14 @@ export function getLearningItems(lang: Language) {
     if (path.split('/').at(-2) !== content.dateTime) fail('date folder must match dateTime');
     for (const language of ['zh', 'en'] as const) {
       const copy = content[language];
-      if (!copy?.title || !copy?.category || !copy?.summary) fail(`${language} requires title, category, and summary`);
+      const summaryIsValid = typeof copy?.summary === 'string'
+        ? copy.summary.trim().length > 0
+        : Array.isArray(copy?.summary)
+          && copy.summary.length > 0
+          && copy.summary.every((paragraph) => typeof paragraph === 'string' && paragraph.trim().length > 0);
+      if (!copy?.title || !copy?.category || !summaryIsValid) {
+        fail(`${language} requires title, category, and a non-empty summary string or string array`);
+      }
     }
     const base = path.slice(0, path.lastIndexOf('/') + 1);
     const mediaUrl = (src: string) => {
@@ -76,6 +84,9 @@ export function getLearningItems(lang: Language) {
     if (!Array.isArray(orderedMedia)) fail('media must be an array');
     return {
       ...content[lang],
+      summary: Array.isArray(content[lang].summary)
+        ? content[lang].summary.join('\n')
+        : content[lang].summary,
       goal: content.goal,
       dateTime: content.dateTime,
       date: new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-US', {

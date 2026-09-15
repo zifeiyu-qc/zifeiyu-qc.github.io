@@ -48,6 +48,7 @@ const noteMedia = media ?? [
   ...noteImages.map((item) => ({ ...item, type: 'image' as const })),
   ...noteVideos.map((item) => ({ ...item, type: 'video' as const })),
 ];
+const summaryParts = summary.split(/(_\{[A-Za-z0-9+-]+\}|\^\{[A-Za-z0-9+-]+\})/g);
 ---
 
 <article class:list={['card', 'learning-card', { 'journal-entry': journal }] } data-learning-entry={journal ? goal : undefined}>
@@ -62,7 +63,12 @@ const noteMedia = media ?? [
       {!journal && <time datetime={dateTime}>{date}</time>}
     </div>
     <h3>{title}</h3>
-    <p>{summary}</p>
+    <p>{summaryParts.map((part) => {
+      if (!part.endsWith('}')) return part;
+      if (part.startsWith('_{')) return <sub>{part.slice(2, -1)}</sub>;
+      if (part.startsWith('^{')) return <sup>{part.slice(2, -1)}</sup>;
+      return part;
+    })}</p>
     {journal && noteMedia.length > 0 && (
       <div class="learning-gallery">
         {noteMedia.map((item) => item.type === 'image' ? (

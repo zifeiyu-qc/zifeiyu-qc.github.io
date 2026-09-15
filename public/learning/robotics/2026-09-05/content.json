@@ -1,0 +1,56 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-05",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "机器人运控理论基础",
+    "summary": ["1、虽然之前就知道一个三维空间刚体的六自由度，但是今天看了课程才知道这六个自由度是怎么来的。",
+    "2、自由刚体C-space就是SE(3)，SO(3)和SE(3)都是李群，SO(3)是所有旋转矩阵的集合，是一个流形空间，代表姿态，SE(3)其次变换矩阵T代表刚体的完整位姿（位置+姿态），是一个流形空间，不能直接相加减。而so(3)和se(3)是李代数，是一个线性空间，so(3)其元素与角速度向量一一对应，用来描述姿态的瞬时角速度，se(3)代表旋量（线速度和角速度）。",
+    "3、几何关系：李代数 = 李群单位元处的切空间（线性空间，描述微小变化）。 计算桥梁：指数映射 (exp)（李代数→李群），即给定旋量轴 + 沿旋量运动的距离，算出刚体的位姿T；对数映射 (log)（李群→李代数），即从一个已知位姿T，反解出对应的旋量轴，以及沿着这个旋量走了多少距离。",
+    "4、✅李群集合里面元素物理含义是统一的，只描述系统某一时刻的状态，没有速度、没有位移增量。\n     ✅李代数是线性向量空间（矩阵集合），数学上只要满足反对称结构就属于这个集合，不自带物理语义。同样一个集合，可以塞两类物理量。"]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Theoretical Foundations of Robotics",
+    "summary": [
+      "1. Although I already knew that a rigid body in three-dimensional space has six degrees of freedom, this course helped me understand where those six degrees of freedom come from.",
+      "2. The configuration space (C-space) of a free rigid body is SE(3). Both SO(3) and SE(3) are Lie groups. SO(3) is the set of all rotation matrices: a manifold representing orientation. An SE(3) homogeneous transformation matrix T represents the complete pose of a rigid body—position and orientation—and also lies on a manifold, so poses cannot be directly added or subtracted. By contrast, so(3) and se(3) are Lie algebras and therefore linear spaces. Elements of so(3) correspond one-to-one with angular-velocity vectors and describe instantaneous rotational motion, while elements of se(3) represent twists containing both linear and angular velocity.",
+      "3. Geometrically, a Lie algebra is the tangent space of its Lie group at the identity, providing a linear description of infinitesimal motion. The exponential map exp takes an element of the Lie algebra to the Lie group: given a screw axis and a displacement along it, it produces the rigid-body pose T. The logarithm map log performs the inverse operation, recovering the corresponding screw axis and displacement from a known pose T.",
+      "4. ✅ Elements of a Lie group share a consistent physical meaning: they describe the state of a system at a particular instant, rather than velocity or an incremental displacement.\n     ✅ A Lie algebra is a linear vector space (represented here as a set of matrices). Mathematically, membership is determined by the required skew-symmetric structure; the set itself does not impose a single physical interpretation, so the same algebraic structure can represent different physical quantities."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/DOF.png",
+      "alt": {
+        "zh": "刚体的六自由度",
+        "en": "Six degrees of freedom of a rigid body"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/liqun&lidaishu.png",
+      "alt": {
+        "zh": "花了很长时间才理解的李群和李代数",
+        "en": "Notes used to work through the relationship between Lie groups and Lie algebras"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/so(3).png",
+      "alt": {
+        "zh": "刚体姿态的李代数",
+        "en": "The so(3) Lie algebra for rigid-body orientation"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/se(3).png",
+      "alt": {
+        "zh": "刚体位姿的李代数",
+        "en": "The se(3) Lie algebra for rigid-body pose"
+      }
+    }
+  ]
+}
