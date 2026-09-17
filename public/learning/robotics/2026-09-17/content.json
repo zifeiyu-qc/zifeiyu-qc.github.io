@@ -1,0 +1,40 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-17",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "逆动力学",
+    "summary": ["1、逆动力学输入关节角度 θ、关节速度 θ^{.}、关节加速度 θ^{..}，输出让机械臂实现该运动时各个关节需要施加的力矩。\n     ✅ 两种求解方式：拉格朗日公式和牛顿-欧拉公式。\n     ✅ 拉格朗日公式：从能量视角出发，得到解析形式的动力学方程 τ = M(θ)θ^{..} + C(θ, θ^{.})θ^{.} + g(θ)，适合理论分析。\n     ✅ 牛顿-欧拉公式：通过力旋量递推计算各个关节的力和力矩，适用于多刚体系统。\n     ✅ 正动力学：已知关节力矩τ，求解关节加速度θ^{..}，用于仿真。",
+                "2、质量矩阵M(θ)：\n     ✅ M(θ)随机器人姿态变化，不是常数矩阵。\n     ✅ 对角线：自身惯量；非对角线：连杆之间惯性耦合（一个关节加速会影响另一个关节）\n     ✅ 物理含义：把关节加速度映射成惯性力矩。即给各个关节多大加速度，会产生多大的惯性反力矩。\n     ✅ 输入各个关节的角加速度向量；输出所有连杆惯性效应对应的关节力矩，包含自身惯量 + 连杆之间互相拖拽的耦合惯性。\n     ✅ F_{b}: 6维力旋量，前三维力矩m_{b}，后三维力f_{b}，刚体受到的全部外力外力矩。\n     ✅ 三维刚体：即使角加速度为零，只要存在角速度{omega}，依然会产生陀螺 / 科氏附加力、附加力矩；二维平面机械臂没有这个陀螺效应，但有科氏离心力。",
+                "3、一个易混点：\n     ✅ 力旋量 Wrench：同一坐标系 {b} 下，3 个沿 XYZ 轴的力 + 3 个绕 XYZ 轴的力矩，打包成 6 维向量，描述刚体受到的外力和外力矩，单位 N、N・m。\n     ✅ RPY 欧拉角：描述坐标系 {b} 相对于世界坐标系的姿态，是先后三次绕轴旋转的角度，单位 rad，只描述朝向，和受力无关。二者共用同一套坐标系 XYZ 轴，但物理含义完全不同。",
+                "4、开链正动力学：\n     ✅ 已知关节力矩 τ、当前关节角度θ、关节速度θ^{.}、末端外力旋量F_{tip}，算出关节加速度θ^{..}。\n     ✅ 逆动力学用于机器人控制，正动力学用于机器人仿真。"]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Inverse Dynamics",
+    "summary": [
+      "1. Inverse dynamics takes joint positions θ, joint velocities θ^{.}, and joint accelerations θ^{..} as inputs, and computes the torque that each joint must apply to produce the desired motion.\n     ✅ Two solution approaches: the Lagrangian formulation and the Newton–Euler formulation.\n     ✅ Lagrangian formulation: derives the analytical dynamics equation τ = M(θ)θ^{..} + C(θ, θ^{.})θ^{.} + g(θ) from an energy-based perspective, making it well suited to theoretical analysis.\n     ✅ Newton–Euler formulation: recursively propagates wrenches to compute the forces and torques at each joint, making it suitable for multibody systems.\n     ✅ Forward dynamics: given the joint torques τ, solve for the joint accelerations θ^{..}; this is primarily used in simulation.",
+      "2. Mass matrix M(θ):\n     ✅ M(θ) varies with the robot configuration and is not a constant matrix.\n     ✅ Diagonal terms represent the inertia associated with each joint, while off-diagonal terms represent inertial coupling between links—acceleration at one joint can affect another joint.\n     ✅ Physical meaning: the mass matrix maps joint accelerations to inertial joint torques, describing how much reaction torque is produced by a given acceleration at each joint.\n     ✅ Input: the vector of joint angular accelerations. Output: the joint torques caused by the inertial effects of all links, including both their individual inertia and the coupled inertia produced as links accelerate one another.\n     ✅ F_{b}: a six-dimensional wrench. Its first three components are the moment m_{b}, and its last three components are the force f_{b}; together they represent all external forces and moments acting on the rigid body.\n     ✅ For a three-dimensional rigid body, a nonzero angular velocity ω can produce additional gyroscopic and Coriolis forces and moments even when the angular acceleration is zero. A planar robot has no gyroscopic effect of this kind, although Coriolis and centrifugal effects still occur.",
+      "3. An important distinction:\n     ✅ Wrench: in a common frame {b}, the three force components along the X, Y, and Z axes and the three moment components about those axes are combined into a six-dimensional vector. It describes the external forces and moments acting on a rigid body, with units of N and N·m.\n     ✅ RPY Euler angles: describe the orientation of frame {b} relative to the world frame through three successive rotations about specified axes. They are measured in radians and describe orientation only, not force. Wrenches and RPY angles refer to the same set of X, Y, and Z axes, but their physical meanings are entirely different.",
+      "4. Forward dynamics of an open chain:\n     ✅ Given the joint torques τ, current joint positions θ, joint velocities θ^{.}, and the external end-effector wrench F_{tip}, compute the joint accelerations θ^{..}.\n     ✅ Inverse dynamics is primarily used for robot control, whereas forward dynamics is primarily used for robot simulation."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/lagrangian.png",
+      "alt": {
+        "zh": "逆动力学方程",
+        "en": "The inverse dynamics equation"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/single_rigid.png",
+      "alt": {
+        "zh": "单刚体运动方程",
+        "en": "The single rigid body dynamics equations"
+      }
+    }
+  ]
+}
