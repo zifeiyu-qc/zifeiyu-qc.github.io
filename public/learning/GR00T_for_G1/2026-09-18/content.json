@@ -1,0 +1,32 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-09-18",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "夹爪和G1联动测试Demo",
+    "summary": "本次联动 Demo 主要是为了验证自研夹爪与宇树 G1 机器人的软硬件适配性。由于夹爪并非原生 DEX1-1，而是由我们自主设计、制造，并完成底层电机驱动、通信接口及抓取控制逻辑的开发与封装，因此需要通过实际操作验证整套系统的可靠性。具体通过抓取和释放物体的完整任务，测试夹爪与 G1 全身控制系统的协同能力，排查运动不平滑、抓取不稳定及控制时序不匹配等问题，为后续 PICO 遥操作、示教数据采集及 VLA 模型部署奠定基础。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Gripper–G1 Coordinated Control Test Demo",
+    "summary": "The primary objective of this integration demo is to validate the hardware and software compatibility between our self-developed gripper and the Unitree G1 humanoid robot. Unlike the native DEX1-1 gripper, our gripper is independently designed and manufactured, with its low-level motor drivers, communication interfaces, and grasping control logic developed and encapsulated in-house. Therefore, practical testing is necessary to verify the reliability of the integrated system. Through a complete manipulation task involving object grasping and release, we aim to evaluate the coordination between the gripper and G1's whole-body control system, identify potential issues such as jerky motion, unstable grasping, and control timing mismatches, and establish a reliable foundation for subsequent PICO-based teleoperation, demonstration data collection, and VLA model deployment."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src": "videos/cooperation1.mp4",
+      "alt": {
+        "zh": "夹爪和G1联动测试demo",
+        "en": "Coordinated control test of the custom gripper and Unitree G1"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/cooperation2.mp4",
+      "alt": {
+        "zh": "夹爪和G1联动测试demo",
+        "en": "Coordinated control test of the custom gripper and Unitree G1"
+      }
+    }
+  ]
+}
