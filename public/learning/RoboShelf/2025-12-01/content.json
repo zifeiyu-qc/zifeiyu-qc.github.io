@@ -1,0 +1,24 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2025-12-01",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "初次接触机器人，从仿真开始",
+    "summary": "刚开始接触这个机器人这方面，从传统的开始做起，先复现师姐的代码，熟悉整个系统的运行流程。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Getting Started with Robotics in Simulation",
+    "summary": "I began my robotics journey by reproducing a senior lab member's implementation in simulation. This gave me a practical introduction to traditional robot control and helped me understand the architecture and execution flow of a complete robotic system."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src":"videos/teleop.mp4",
+      "alt":{
+        "zh":"在仿真中摇操控制UR30机械臂",
+        "en":"Teleoperating the UR30 robot arm in simulation"
+      }
+    }
+  ]
+}

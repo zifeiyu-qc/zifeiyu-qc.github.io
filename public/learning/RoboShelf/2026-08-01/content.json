@@ -1,0 +1,24 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2026-08-01",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "完成最终项目",
+    "summary": "经过多次迭代与测试，最终完成了这个项目，中间时间干其他事情去了~哈哈，比如搞论文~"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Completing the RoboShelf Project",
+    "summary": "After multiple rounds of iteration and testing, I completed the RoboShelf project."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src": "videos/RoboShelf.mp4",
+      "alt": {
+        "zh": "RoboShelf 项目最终演示",
+        "en": "Final demonstration of the RoboShelf project"
+      }
+    }
+  ]
+}

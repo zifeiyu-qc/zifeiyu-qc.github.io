@@ -1,0 +1,32 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2025-12-24",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "手眼标定",
+    "summary": "学习了手眼标定的基本原理和方法，并在真机上进行了实践，完成了机械臂与相机的标定工作，为后续的视觉引导抓取任务奠定了基础。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Hand–Eye Calibration",
+    "summary": "I studied the fundamentals and workflow of hand–eye calibration, then completed the calibration between the camera and the robot arm on the physical system. This established the spatial relationship required for subsequent vision-guided grasping tasks."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src":"videos/easy_hand_eye.mp4",
+      "alt":{
+        "zh":"手眼标定过程",
+        "en":"Hand–eye calibration procedure"
+      }
+    },
+    {
+      "type": "video",
+      "src":"videos/test.mp4",
+      "alt":{
+        "zh":"验证手眼标定",
+        "en":"Validating the hand–eye calibration result"
+      }
+    }
+  ]
+}

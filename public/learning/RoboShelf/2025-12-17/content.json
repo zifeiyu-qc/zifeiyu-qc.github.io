@@ -1,0 +1,24 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2025-12-17",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "sim2real",
+    "summary": "还是复现的师姐的代码哈哈~只不过这一次是在真机上跑了，主要是为了熟悉整个系统的运行流程。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "From Simulation to the Real Robot",
+    "summary": "I transferred the reproduced control workflow from simulation to the physical UR30 robot arm. Running the system on real hardware helped me become familiar with its interfaces, execution pipeline, and the practical considerations involved in real-world robot operation."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src":"videos/teleop_real.mp4",
+      "alt":{
+        "zh":"在真机上操作控制UR30机械臂",
+        "en":"Operating the UR30 robot arm on real hardware"
+      }
+    }
+  ]
+}

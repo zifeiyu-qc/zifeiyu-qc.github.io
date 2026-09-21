@@ -1,0 +1,32 @@
+{
+  "goal": "GR00T N1.6 for UR30",
+  "dateTime": "2026-06-19",
+  "zh": {
+    "category": "GR00T N1.6 for UR30",
+    "title": "摇操数据采集",
+    "summary": "第一次接触遥操作，使用的是Meta Quest Pro，主要是利用了宇树开源的摇操代码，然后将摇操对象改为了UR30机械臂，完成了对UR30机械臂的摇操数据采集。"
+  },
+  "en": {
+    "category": "GR00T N1.6 for UR30",
+    "title": "UR30 Teleoperation Data Collection",
+    "summary": "This was my first experience with robot teleoperation. I used a Meta Quest Pro together with Unitree's open-source teleoperation code, adapted the original control target to a UR30 robot arm, and completed a teleoperation data-collection workflow for the UR30."
+  },
+  "media": [
+  {
+    "type": "video",
+    "src": "videos/teleop.mp4",
+    "alt": {
+      "zh": "UR30 机械臂遥操作测试",
+      "en": "UR30 teleoperation test"
+    }
+  },
+  {
+    "type": "video",
+    "src": "videos/pick_apple.mp4",
+    "alt": {
+      "zh": "采集抓苹果数据",
+      "en": "Teleoperation data collection for an apple-picking task"
+    }
+  }
+]
+}

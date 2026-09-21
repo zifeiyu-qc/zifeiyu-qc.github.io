@@ -1,0 +1,24 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2026-03-01",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "加入视觉检测",
+    "summary": "在之前那个版本中加入了视觉检测，并把手眼标定也用上了，完成了一个完整的视觉引导抓取demo。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Integrating Visual Object Detection",
+    "summary": "I integrated visual object detection and hand–eye calibration into the previous workflow, completing an end-to-end vision-guided grasping demo that connects object localization with robot execution."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src":"videos/goal_detect.mp4",
+      "alt":{
+        "zh":"加入了视觉检测",
+        "en":"Vision-guided object detection and grasping demo"
+      }
+    }
+  ]
+}

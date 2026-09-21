@@ -1,0 +1,32 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2026-07-01",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "采数据打标签",
+    "summary": "搜集了货架上的物体的照片，大概有两百多张，然后来打标签用于训练yolo模型，后面做视觉检测。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Collecting and Annotating Training Data",
+    "summary": "I collected more than 200 images of products on supermarket shelves and annotated them to build a dataset for training a YOLO object detection model, laying the groundwork for the vision perception module used in subsequent grasping tasks."
+  },
+  "media": [
+    {
+      "type": "image",
+      "src":"images/pic1.png",
+      "alt":{
+        "zh":"采集货架上的物体的照片",
+        "en":"Collecting images of products on supermarket shelves"
+      }
+    },
+    {
+      "type": "image",
+      "src":"images/pic2.png",
+      "alt":{
+        "zh":"采集货架上的物体的照片",
+        "en":"Collecting images of products on supermarket shelves"
+      }
+    }
+  ]
+}

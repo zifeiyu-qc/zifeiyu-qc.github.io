@@ -1,0 +1,24 @@
+{
+  "goal": "RoboShelf",
+  "dateTime": "2026-01-10",
+  "zh": {
+    "category": "RoboShelf",
+    "title": "固定坐标下的pick & place",
+    "summary": "做了个小小的demo，通过语音完成简单的pick & place任务，这个时候物体坐标都是固定写死的，作为上手的第一个项目，主要是为了熟悉整个系统的运行流程。"
+  },
+  "en": {
+    "category": "RoboShelf",
+    "title": "Fixed-Coordinate Pick-and-Place",
+    "summary": "I built a small voice-controlled demo that performs a basic pick-and-place task using fixed, hard-coded object coordinates. As my first hands-on robotics project, it helped me understand the complete system workflow and how voice commands are translated into robot actions."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src":"videos/fixed_base.mp4",
+      "alt":{
+        "zh":"固定坐标下的pick & place",
+        "en":"Voice-controlled pick-and-place at predefined coordinates"
+      }
+    }
+  ]
+}

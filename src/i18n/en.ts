@@ -103,9 +103,10 @@ export const en = {
     allGoals: 'All',
     allGoalsDescription: 'Follow my progress from foundational learning and simulation debugging to building hardware, with the questions, experiments, and lessons from each stage.',
     goals: [
-      { id: 'robotics', label: 'Robotics', description: 'Building a foundation in robot manipulation through kinematics, control, and planning, with learning notes and practical work toward deployment.' },
-      { id: 'RoboShelf', label: 'RoboShelf Project', description: 'Documenting a supermarket shelf picking system, from web orders to robotic grasping, including development challenges and the approaches used to address them.' },
-      { id: 'GR00T N1.7 for G1', label: 'GR00T N1.7 for G1', description: 'Preparing to explore GR00T on the G1 humanoid through gripper design and fabrication, whole-body control simulation in MuJoCo, and debugging, while building hands-on manipulation experience.' },
+      { id: 'GR00T N1.7 for G1', label: 'GR00T N1.7 for G1', description: 'Exploring applications of GR00T on the G1 humanoid robot through gripper design and fabrication, whole-body control simulation in MuJoCo, and system debugging, while progressively building hands-on experience in robotic manipulation.' },
+      { id: 'RoboShelf', label: 'RoboShelf', description: 'This track documents my progression from learning robotics from scratch to building a complete supermarket shelf-picking system that connects web-based ordering with robotic grasp execution. It also captures the technical challenges encountered and the solutions developed along the way. As this is an earlier project, some dates are approximate.' },
+      { id: 'GR00T N1.6 for UR30', label: 'GR00T N1.6 for UR30', description: 'As part of my research, I deployed GR00T N1.6 on a UR30 robot arm to perform basic pick-and-place tasks. These brief notes document the practical experience I gained across the full pipeline, from data collection to real-robot deployment.' },
+      { id: 'robotics', label: 'Robotics Foundations', description: 'Building foundational knowledge in robot manipulation through kinematics, control, and planning, alongside learning notes and hands-on practice geared toward real-world deployment.' },
     ],
     get items() { return getLearningItems('en'); },
   },

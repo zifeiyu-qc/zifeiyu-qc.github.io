@@ -1,0 +1,64 @@
+{
+  "goal": "GR00T N1.6 for UR30",
+  "dateTime": "2026-06-30",
+  "zh": {
+    "category": "GR00T N1.6 for UR30",
+    "title": "GR00T训练后部署在真机上测试",
+    "summary": "本次测试覆盖了 7 项操作任务，每项任务均采集了 100 条示范数据。模型在基础的 Pick-and-Place 任务中表现较好，但在叠杯等难度更高的任务中稳定性有所下降。初步分析认为，当前系统仅使用第三视角相机，缺少腕部相机提供近距离视觉反馈，可能限制了模型对精细操作状态的感知能力。"
+  },
+  "en": {
+    "category": "GR00T N1.6 for UR30",
+    "title": "Real-Robot Evaluation after GR00T Training",
+    "summary": "This evaluation covered seven manipulation tasks, with 100 demonstrations collected for each task. The model performed well on basic pick-and-place tasks, but its reliability decreased on more challenging tasks such as cup stacking. My initial assessment is that the current setup relies on a single third-person camera and lacks a wrist-mounted camera for close-range visual feedback, which may limit the model's ability to perceive fine-grained manipulation states."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src": "videos/place_apple_in_the_box.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：将苹果放入盒中",
+        "en": "GR00T real-robot test: placing an apple into a box"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/place_bottle_in_the_box.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：将瓶子放入盒中",
+        "en": "GR00T real-robot test: placing a bottle into a box"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/put_drinking_vessel_on_the_plate.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：将饮水容器放到盘子上",
+        "en": "GR00T real-robot test: placing a drinking vessel onto a plate"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/put_fruit_on_plate.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：将水果放到盘子上",
+        "en": "GR00T real-robot test: placing fruit onto a plate"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/stack_cube.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：堆叠方块",
+        "en": "GR00T real-robot test: stacking cubes"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/stack_cup.mp4",
+      "alt": {
+        "zh": "GR00T 模型真机测试：叠杯",
+        "en": "GR00T real-robot test: stacking cups"
+      }
+    }
+  ]
+}
