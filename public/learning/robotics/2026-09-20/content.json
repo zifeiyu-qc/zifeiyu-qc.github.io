@@ -1,0 +1,52 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-20",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "运动规划",
+    "summary": ["1、运动规划：在 C 空间中，给定起点和终点，规划出一条可行的轨迹，使机器人从起点运动到终点，同时避开障碍物。",
+                "2、C 空间：机器人全部构型组成的空间；物理障碍物映射为 C 空间禁区，碰撞检测是核心耗时模块。",
+                "3、常用算法：\n     ✅ Dijkstra 算法：最短路径搜索算法，适用于图结构；\n     ✅ A* 算法：启发式搜索算法，结合了 Dijkstra 算法和贪心算法的优点；\n     ✅ RRT（Rapidly-exploring Random Tree）：随机采样树算法，适用于高维空间；\n     ✅ PRM（Probabilistic Roadmap）：概率路网算法，通过随机采样构建路网。",
+                "4、网格方法：将 C 空间离散化为网格，使用图搜索算法进行路径规划；\n     ✅ 优点：简单易实现，适用于低维空间；\n     ✅ 缺点：计算量大，精度受网格分辨率影响。\n     ✅ 自适应网格（四叉树 / 八叉树 3D）：优化手段，障碍物附近细化、空旷区域粗网格，减少单元数量。",
+                "5、采样类运动规划方法的共同点：\n     ✅ PRM、RRT 和 RRT* 均属于采样类运动规划方法。\n     ✅ 这类方法不需要划分网格，能够规避高维 C 空间中的维数灾难。\n     ✅ 核心目标是在不依赖时间信息的情况下，求解一条无碰撞的几何路径。",
+                "6、PRM（Probabilistic Roadmap，概率路标法）：\n     ✅ 核心思想：离线构建全局路线图，后续可针对不同起点和终点进行多次查询规划。\n     ✅ 基本流程：在 C 空间中随机采样 → 筛选无碰撞采样点 → 连接邻近节点并进行碰撞检测 → 建立路线图 → 查询时使用 A* 或 Dijkstra 搜索路径。\n     ✅ 特点：适合静态环境，可重复调用，并且通常能够得到质量较好的路径；如果环境发生动态变化，一般需要重新构建路线图。",
+                "7、RRT / RRT*（Rapidly-exploring Random Tree，快速扩展随机树）：\n     ✅ 核心思想：根据在线查询任务逐步扩展搜索树，不需要预先构建全局地图，也不依赖 A* 搜索。\n     ✅ 基本流程：从起点开始随机采样 → 向采样点方向延伸树节点 → 对新边进行碰撞检测 → 触达终点后回溯生成路径。\n     ✅ 特点：适合动态环境，是实时规划的常用选择。RRT 只保证概率完备性，找到的路径通常并非最优；RRT* 通过重连和持续优化逐渐逼近最优路径。\n     ✅ 采样生成的路径通常不够平滑，需要在执行前进行路径简化和平滑等后处理。",
+                "8、PRM 与 RRT 的工程对比：\n     ✅ PRM：先构建路线图，再使用 A* / Dijkstra 搜索路径，适合静态环境、多次查询和复用，路径通常更接近最优。\n     ✅ RRT：在查询过程中直接扩展搜索树并寻找路径，适合动态环境和实时规划，无需预先建图。",
+                "9、人工势场法（Artificial Potential Field，APF）：\n     ✅ 方法类别：不属于采样类运动规划方法。\n     ✅ 基本原理：目标位置产生引力，障碍物产生斥力，机器人沿合力的负梯度方向运动。\n     ✅ 优点：计算速度快、生成路径平滑，适合实时局部避障。\n     ❌ 致命缺陷：容易陷入局部极小值，使机器人停在非目标位置，因此不适合单独用于全局路径规划。\n     ✅ 工程用法：通常与 RRT 或 PRM 搭配使用，由采样方法完成全局路径规划，再由人工势场法负责局部实时避障。",
+                "10、非线性优化运动规划：\n     ✅ 核心思想：先提供一条初始路径，然后不断微调路径上的所有构型点，在满足各类约束的同时最小化代价函数，通过迭代打磨得到合格路径。本质上是将运动规划转化为带约束的数值优化问题。\n     ✅ 硬性约束：起点和终点固定、路径不能与障碍物碰撞，并且必须满足关节限位。\n     ✅ 优化目标（代价函数）：缩短路径、提高轨迹平滑度，并减小速度和加速度。\n     ✅ 与采样规划的主要区别：RRT / PRM 负责搜索并找到一条可行路径，但结果往往曲折，需要后续平滑；非线性优化则在已有路径的基础上迭代微调，输出通常更加自然和平滑。\n     ✅ 优点：轨迹平滑、电机冲击较小，并且便于进一步加入运动学和动力学约束。\n     ❌ 缺点：高度依赖初始路径；初始路径较差时容易陷入局部最优，甚至无法找到可行解。它本身缺乏全局搜索能力，不一定能够自动发现可行通道。\n     ✅ 工程用法：通常不单独用于从零寻找路径。经典流程是先由 RRT / PRM 生成粗略的无碰撞初始路径，再交给非线性优化器进行平滑和约束优化。"]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Motion Planning",
+    "summary": [
+      "1. Motion planning: given a start and goal configuration in configuration space (C-space), compute a feasible trajectory that moves the robot between them while avoiding obstacles.",
+      "2. Configuration space (C-space): the space containing every possible robot configuration. Physical obstacles are mapped into forbidden regions of C-space, and collision checking is typically the most computationally expensive operation.",
+      "3. Common algorithms:\n     ✅ Dijkstra's algorithm: a shortest-path search algorithm for graph structures.\n     ✅ A*: a heuristic search algorithm that combines ideas from Dijkstra's algorithm and greedy search.\n     ✅ RRT (Rapidly-exploring Random Tree): a randomized tree-based algorithm suitable for high-dimensional spaces.\n     ✅ PRM (Probabilistic Roadmap): constructs a roadmap from random samples.",
+      "4. Grid-based methods: discretize C-space into a grid and apply graph-search algorithms to plan a path.\n     ✅ Advantage: conceptually simple and easy to implement, especially in low-dimensional spaces.\n     ✅ Limitation: computational cost can be high, and accuracy depends on grid resolution.\n     ✅ Adaptive grids (quadtrees / 3D octrees): refine cells near obstacles and use coarser cells in open regions to reduce the total number of cells.",
+      "5. Shared properties of sampling-based motion-planning methods:\n     ✅ PRM, RRT, and RRT* are all sampling-based planners.\n     ✅ They avoid explicit grid discretization and help mitigate the curse of dimensionality in high-dimensional C-space.\n     ✅ Their central objective is to find a collision-free geometric path without requiring timing information.",
+      "6. PRM (Probabilistic Roadmap):\n     ✅ Core idea: construct a global roadmap offline, then reuse it for multiple planning queries with different start and goal configurations.\n     ✅ Workflow: sample configurations in C-space → retain collision-free samples → connect nearby nodes with collision checking → build the roadmap → use A* or Dijkstra to search it during a query.\n     ✅ Characteristics: well suited to static environments, reusable across queries, and often capable of producing relatively high-quality paths. If the environment changes dynamically, the roadmap generally needs to be rebuilt.",
+      "7. RRT / RRT* (Rapidly-exploring Random Tree):\n     ✅ Core idea: incrementally grow a search tree for the current online query. No global roadmap or A* search is required in advance.\n     ✅ Workflow: sample from the start configuration → extend the tree toward each sample → collision-check the new edge → once the goal is reached, trace backward through the tree to recover the path.\n     ✅ Characteristics: suitable for dynamic environments and commonly used for real-time planning. RRT is probabilistically complete but does not generally return an optimal path; RRT* uses rewiring and continued refinement to asymptotically approach an optimal path.\n     ✅ Sampled paths are usually not smooth enough for direct execution and commonly require shortcutting, smoothing, or other post-processing.",
+      "8. Engineering comparison between PRM and RRT:\n     ✅ PRM: first build a roadmap, then use A* / Dijkstra to search for a path. It is suitable for static environments, repeated queries, and reuse, and its paths are often closer to optimal.\n     ✅ RRT: grow a search tree and find a path during the query itself. It is suitable for dynamic environments and real-time planning, and does not require a precomputed roadmap.",
+      "9. Artificial Potential Field (APF):\n     ✅ Method category: APF is not a sampling-based motion-planning method.\n     ✅ Principle: the goal generates an attractive force, obstacles generate repulsive forces, and the robot moves along the negative gradient of the resulting potential field.\n     ✅ Advantages: fast computation and smooth paths, making it suitable for real-time local obstacle avoidance.\n     ❌ Critical limitation: the planner can become trapped in a local minimum and stop away from the goal, so APF is not suitable as a standalone global planner.\n     ✅ Engineering use: APF is commonly paired with RRT or PRM—the sampling-based planner produces the global path, while APF handles real-time local obstacle avoidance.",
+      "10. Nonlinear optimization for motion planning :\n     ✅ Core idea: begin with an initial path and iteratively adjust all configurations along it, minimizing a cost function while satisfying the required constraints. In essence, motion planning is reformulated as a constrained numerical optimization problem.\n     ✅ Hard constraints: keep the start and goal fixed, remain collision-free, and satisfy all joint limits.\n     ✅ Optimization objectives (cost terms): shorten the path, improve trajectory smoothness, and reduce velocity and acceleration.\n     ✅ Key difference from sampling-based planning: RRT / PRM search for a feasible path, but the result is often jagged and requires later smoothing. Nonlinear optimization instead iteratively refines an existing path and usually produces a more natural, smoother result.\n     ✅ Advantages: smooth trajectories, lower actuator shock, and a convenient framework for incorporating additional kinematic and dynamic constraints.\n     ❌ Limitations: the result depends heavily on the initial path. A poor initialization can lead to a local optimum or no feasible solution. Because the optimizer lacks global search capability, it may fail to discover a feasible passage on its own.\n     ✅ Engineering use: nonlinear optimization is rarely used by itself to find a path from scratch. A common pipeline is to use RRT / PRM to generate a coarse collision-free initial path, then pass that path to a nonlinear optimizer for smoothing and constraint refinement."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/A_star.png",
+      "alt": {
+        "zh": "A*算法",
+        "en": "A* algorithm"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/grid.png",
+      "alt": {
+        "zh": "网格方法",
+        "en": "Grid method"
+      }
+    }
+  ]
+}

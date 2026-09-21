@@ -48,7 +48,7 @@ const noteMedia = media ?? [
   ...noteImages.map((item) => ({ ...item, type: 'image' as const })),
   ...noteVideos.map((item) => ({ ...item, type: 'video' as const })),
 ];
-const summaryParts = summary.split(/(θ\^\{\.\.\}|θ\^\{\.\}|_\{[A-Za-z0-9+-]+\}|\^\{[A-Za-z0-9+-]+\})/g);
+const summaryParts = summary.split(/(θ\^\{\.\.\}|θ\^\{\.\}|_\{[A-Za-z0-9+*-]+\}|\^\{[A-Za-z0-9+*-]+\})/g);
 ---
 
 <article class:list={['card', 'learning-card', { 'journal-entry': journal }] } data-learning-entry={journal ? goal : undefined}>

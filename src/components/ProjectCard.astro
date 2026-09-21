@@ -7,6 +7,8 @@ interface Props {
   description: string;
   tags?: string[];
   href?: string;
+  repositoryUrl?: string;
+  showRepositoryLink?: boolean;
   featured?: boolean;
   video?: string;
   poster?: string;
@@ -26,6 +28,8 @@ const {
   description,
   tags = [],
   href,
+  repositoryUrl,
+  showRepositoryLink = false,
   featured = false,
   video,
   poster,
@@ -44,7 +48,18 @@ const cardPreview = previewImage ?? poster;
 
 <article id={slug} class:list={['card', 'project-card', { featured, 'has-media': showMedia || preview }] }>
   <div class="card-heading">
-    <span class="card-kicker">{featured ? t.common.featuredProject : t.common.project}</span>
+    {(featured || !showMedia) && <span class="card-kicker">{featured ? t.common.featuredProject : t.common.project}</span>}
+    {showRepositoryLink && repositoryUrl && (
+      <a
+        class="project-repository-link"
+        href={repositoryUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${t.common.githubRepository}: ${title}`}
+      >
+        {t.common.githubRepository} <span aria-hidden="true">↗</span>
+      </a>
+    )}
     <span class:list={['project-status', `is-${statusTone}`]}>
       <span aria-hidden="true"></span>{status ?? t.common.inProgress}
     </span>

@@ -94,7 +94,7 @@ const metadata = page === 'home' ? t.home : t[page];
   )}
 
   {page === 'projects' && (
-    <><section class="page-intro container"><h1>{t.projects.heading}</h1><p>{t.projects.intro}</p></section><section class="section container" aria-label={t.projects.listAria}><div class="card-grid project-showcase-grid">{t.projects.items.map((project) => <ProjectCard lang={lang} showMedia {...project} />)}</div></section></>
+    <><section class="page-intro container"><h1>{t.projects.heading}</h1><p>{t.projects.intro}</p></section><section class="section container" aria-label={t.projects.listAria}><div class="card-grid project-showcase-grid">{t.projects.items.map((project) => <ProjectCard lang={lang} showMedia showRepositoryLink {...project} />)}</div></section></>
   )}
 
   {page === 'learning' && (

@@ -1,0 +1,40 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-18",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "点对点轨迹规划",
+    "summary": ["1、定义：点对点轨迹规划是指在给定的起始点和目标点之间，规划出一条平滑的轨迹，使机器人能够从起始点运动到目标点，同时满足速度、加速度和控制输入的约束条件。\n     ✅ Path 路径：只定义空间几何形态，参数s，无关时间；\n     ✅ Trajectory 轨迹 = 路径 + 时间缩放，附带速度加速度；\n     ✅ 解耦插值：位置线性插值，姿态 SLERP 球面插值；禁止直接线性插值 4×4 位姿矩阵，会破坏旋转正交性。\n     ✅ 两种笛卡尔位姿插值方式：\n        • 线性插值：位姿矩阵线性插值，破坏旋转正交性，需归一化旋转矩阵；\n        • 球面插值：四元数球面插值，保持旋转正交性。",
+    "2、时间缩放作用：把只带参数s的空间路径（path），变成带时间t、速度加速度的轨迹（trajectory），也就是s(t)。 ",
+    "3、三种常见时间缩放方式：\n     ✅ 3 阶多项式：起点、终点速度 = 0；加速度在起止点突变（不连续）。简单，但启动停止有冲击。\n     ✅ 5阶多项式：起点终点速度、加速度全部为 0，加速度连续，运动更顺滑，工业常用。\n     ✅ 梯形速度剖面：三段式：匀加速→匀速→匀减速。速度上限固定，加速度会跳变；机器人很常用。",
+    "4、时间最优时间缩放：\n     ✅ 目标：给定固定几何路径，只规划速度剖面，在电机力矩、速度约束下，求沿该路径运动的最短时间。\n     ✅ 经典算法：bang-bang（砰砰控制），前半段全程满加速，切换点之后全程满减速，全程贴着力矩极限跑，就是时间最优。\n     ✅ 局限：路径不能变！只调快慢。如果碰到障碍物需要改路径，这个方法不适用。时间最优轨迹会有剧烈冲击，bang-bang 加速度突变，真实机器人会振动，实际工程很少直接裸用，一般会加平滑。\n     ✅ 基础 bang-bang：相平面上轨迹贴着运动锥边界，前向积分加速、反向积分减速，交点S^{*}为切换点。\n     ✅ 通用情况：同时存在关节转速的速度极限曲线，最优轨迹可能变成「满加速 → 贴着速度极限匀速 → 满减速」三段式，需要迭代寻找切点S_{tan}。"]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Point-to-Point Trajectory Planning",
+    "summary": [
+      "1. Definition: point-to-point trajectory planning generates a smooth motion between a specified start point and goal point while satisfying constraints on velocity, acceleration, and control inputs.\n     ✅ Path: defines only the spatial geometry and is parameterized by s; it is independent of time.\n     ✅ Trajectory = path + time scaling, and therefore includes velocity and acceleration information.\n     ✅ Decoupled interpolation: use linear interpolation for position and SLERP (Spherical Linear Interpolation) for orientation. Directly applying linear interpolation to a 4×4 pose matrix is not allowed because it destroys the orthogonality of the rotation matrix.\n     ✅ Two Cartesian pose interpolation methods:\n        • Linear interpolation: linearly interpolate the pose matrix; this breaks rotational orthogonality, so the rotation matrix must be renormalized.\n        • Spherical interpolation: apply quaternion SLERP to preserve rotational orthogonality.",
+      "2. Purpose of time scaling: convert a spatial path parameterized only by s into a time-parameterized trajectory with velocity and acceleration information—that is, define s(t).",
+      "3. Three common time-scaling methods:\n     ✅ Cubic polynomial: the start and end velocities are zero, but acceleration is discontinuous at the endpoints. It is simple, although starting and stopping introduce impact.\n     ✅ Quintic polynomial: both velocity and acceleration are zero at the start and end. Acceleration is continuous, producing smoother motion, so this method is widely used in industry.\n     ✅ Trapezoidal velocity profile: consists of three phases—constant acceleration, constant velocity, and constant deceleration. The velocity limit is fixed, but acceleration changes discontinuously; this profile is commonly used in robotics.",
+      "4. Time-optimal time scaling:\n     ✅ Objective: for a fixed geometric path, plan only the velocity profile and minimize traversal time subject to actuator torque and velocity constraints.\n     ✅ Classical solution: bang-bang control. The robot accelerates at the maximum allowable rate during the first phase and decelerates at the maximum allowable rate after the switching point. By operating on the torque limits throughout the motion, it achieves the minimum traversal time.\n     ✅ Limitation: the geometric path is fixed; only the traversal speed can change. This method is therefore unsuitable when obstacle avoidance requires the path itself to be modified. A time-optimal trajectory can also produce severe impact because bang-bang control introduces discontinuous acceleration. On a real robot this can cause vibration, so practical implementations usually add smoothing rather than applying the raw profile directly.\n     ✅ Basic bang-bang case: in the phase plane, the trajectory follows the boundary of the motion cone. Forward integration produces the accelerating branch, backward integration produces the decelerating branch, and their intersection S^{*} is the switching point.\n     ✅ General case: when joint-speed limits introduce a velocity-limit curve, the optimal profile may become a three-phase sequence—maximum acceleration, motion along the velocity limit, and maximum deceleration. The tangent switching point S_{tan} must then be found iteratively."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/lagrangian.png",
+      "alt": {
+        "zh": "逆动力学方程",
+        "en": "The inverse dynamics equation"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/single_rigid.png",
+      "alt": {
+        "zh": "单刚体运动方程",
+        "en": "The single rigid body dynamics equations"
+      }
+    }
+  ]
+}
