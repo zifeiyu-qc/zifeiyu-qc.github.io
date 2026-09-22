@@ -1,0 +1,49 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-22",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "控制学",
+    "summary": ["1、控制系统概述：控制的目标是减小跟踪误差。分两大类控制器：\n     ✅ 速度输入控制：上层控制器输出关节速度指令，驱动器底层自己负责力矩闭环；\n     ✅ 力矩输入控制：上层直接输出关节力矩，需要机器人动力学模型。",
+                "2、错误响应：观察误差随时间怎么变化，用来评价控制器好坏\n     ✅ 暂态响应（Transient）：误差从初始值往下降的过程，看超调量、调节时间。比如会不会来回震荡、多久稳定下来。\n     ✅ 稳态响应（Steady-state）：系统稳定之后，最终剩下多少误差（稳态误差）。",
+                "3、线性误差动力学：把误差写成线性微分方程，用数学方法判断系统是否稳定。\n     ✅ 关键结论：二阶误差动力学，只要微分方程各项系数全大于 0，系统稳定；高于二阶不能只看系数正负；",
+                "4、一阶误差动力学：最简单的误差模型，对应速度型伺服。\n      二阶误差动力学：机械臂力矩控制最经典模型，能描述震荡和超调。",
+                "5、速度输入运动控制：驱动器自带速度闭环，你上层只下发关节速度指令。\n     ✅ P控制（比例控制 Proportional）：误差多大，就按比例给多大的修正指令。\n     ✅ 前馈控制（Feedforward）：提前预判，直接给基础指令，不等误差出现再纠偏。\n     ✅ 基础速度输入控制（P 控制 + 前馈）：误差动力学就是一阶系统，无震荡。缺点：纯 P 控制，存在稳态误差，负载、摩擦会带来固定偏差。\n     ✅ 前馈 + PI 反馈控制:新增积分 I 项：只要误差一直存在，积分不断累积，消除稳态误差。工程坑：积分饱和。误差大的时候积分值疯狂累加，触发大超调，K_{i}一般取很小。\n     ✅ 关节空间控制没有奇异问题；只有笛卡尔任务空间控制才会碰到雅可比奇异。",
+                "6、力输入运动控制：力矩控制直接给电机下发「关节力矩指令」，利用机器人动力学模型，抵消惯性、离心、科氏力，把非线性机械臂，强行变成简单的线性二阶系统。\n     ✅ 关节空间计算力矩控制：前馈抵消非线性项；\n     ✅ 任务空间计算力矩控制：关节空间是控制各个关节角度；任务空间直接控制夹爪末端 XYZ 位置姿态。",
+                "7、力控制：不再强行控制末端位置，转而直接控制机器人和环境之间的接触力大小。\n     ✅ 适用场景：打磨、抛光、装配、接触面贴合，需要可控接触压力。\n     ❌ 局限：只能在有接触的方向使用；如果没碰到工件，力控制会让机器人乱跑；需要力传感器（六维力传感器，测 3 个力 + 3 个力矩）；环境越硬，力控制器越容易震荡，调参更难。",
+                "8、混合运动 - 力控制：同一个末端，一部分自由度做位置控制，另一部分自由度做力控制，分开控制。"
+                ]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Control Theory",
+    "summary": [
+      "1. Overview of control systems: The objective of control is to reduce tracking error. Controllers can be divided into two main categories:\n     ✅ Velocity-input control: The high-level controller outputs joint-velocity commands, while the low-level motor drives handle the torque control loops.\n     ✅ Torque-input control: The high-level controller directly outputs joint torques and therefore requires a robot dynamics model.",
+      "2. Error response: Observe how the error changes over time to evaluate controller performance.\n     ✅ Transient response: The process through which the error decreases from its initial value. Key measures include overshoot and settling time—for example, whether the system oscillates and how long it takes to stabilize.\n     ✅ Steady-state response: The residual error after the system has stabilized, also known as the steady-state error.",
+      "3. Linear error dynamics: Express the error as a linear differential equation and use mathematical tools to determine system stability.\n     ✅ Key conclusion: For second-order error dynamics, the system is stable when all coefficients of the differential equation are positive. For systems above second order, stability cannot be determined solely from the signs of the coefficients.",
+      "4. First-order error dynamics: The simplest error model, commonly associated with velocity servo control.\n     Second-order error dynamics: The classical model for robot torque control, capable of describing oscillation and overshoot.",
+      "5. Velocity-input motion control: The motor drives contain their own velocity control loops, while the high-level controller only sends joint-velocity commands.\n     ✅ P control (Proportional control): The correction command is proportional to the magnitude of the error.\n     ✅ Feedforward control: A nominal command is supplied in advance instead of waiting for an error to occur before correcting it.\n     ✅ Basic velocity-input control (P control + feedforward): The resulting error dynamics form a first-order system without oscillation. Limitation: pure P control produces steady-state error, while load and friction can introduce a constant offset.\n     ✅ Feedforward + PI feedback control: An integral term is added. As long as an error persists, the integral accumulates and eliminates steady-state error. A common engineering issue is integral windup: when the error is large, the integral can accumulate excessively and cause substantial overshoot, so K_{i} is generally chosen to be small.\n     ✅ Joint-space control has no kinematic singularity problem; Jacobian singularities arise only in Cartesian task-space control.",
+      "6. Torque-input motion control: Torque control sends joint-torque commands directly to the motors. A robot dynamics model is used to compensate for inertia, centrifugal forces, and Coriolis forces, effectively transforming the nonlinear manipulator into a simpler linear second-order system.\n     ✅ Joint-space computed-torque control: Feedforward compensation cancels the nonlinear dynamics.\n     ✅ Task-space computed-torque control: Joint-space control regulates individual joint angles, whereas task-space control directly regulates the end effector's Cartesian position and orientation.",
+      "7. Force control: Instead of strictly regulating the end-effector position, force control directly regulates the contact force between the robot and its environment.\n     ✅ Applications: Grinding, polishing, assembly, and surface-following tasks that require controlled contact pressure.\n     ❌ Limitations: It can only be applied along directions where contact exists; without contact, the controller may cause uncontrolled robot motion. It also requires a force/torque sensor that measures three forces and three torques. The stiffer the environment, the more prone the force controller is to oscillation and the more difficult it becomes to tune.",
+      "8. Hybrid motion–force control: Different degrees of freedom of the same end effector are controlled separately—some with position control and others with force control."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/error_response.png",
+      "alt": {
+        "zh": "错误响应",
+        "en": "Error Response"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/difference.png",
+      "alt": {
+        "zh": "力控输入对比",
+        "en": "Force Control Input Comparison"
+      }
+    }
+  ]
+}
