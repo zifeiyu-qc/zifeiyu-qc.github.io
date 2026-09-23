@@ -98,7 +98,9 @@ export const zh = {
     intro: '将论文阅读、实验过程和工程经验整理为结构化、可复用的知识，记录自己的成长过程。',
     categoriesAria: '学习分类',
     goalsAria: '按学习目标筛选笔记',
-    tracksLabel: '学习路径',
+    tracksLabel: '选择学习路径',
+    tracksHint: '点击下方选项卡，查看不同项目与阶段的完整成长时间线。',
+    orderLabel: '下方内容将随选择切换 ↓',
     allGoals: '全部',
     allGoalsDescription: '按时间回顾从基础学习、仿真调试到实物制作的实践过程，展示每个阶段的问题、探索与进展。',
     goals: [

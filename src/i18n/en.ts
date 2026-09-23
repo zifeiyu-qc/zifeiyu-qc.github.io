@@ -99,7 +99,9 @@ export const en = {
     intro: 'Structured notes that turn papers, experiments, and engineering lessons into reusable understanding while documenting my growth along the way.',
     categoriesAria: 'Learning categories',
     goalsAria: 'Filter learning notes by goal',
-    tracksLabel: 'Learning Tracks',
+    tracksLabel: 'Choose a Learning Track',
+    tracksHint: 'Select a track below to explore the complete timeline for each project or learning stage.',
+    orderLabel: 'The timeline below updates with your selection ↓',
     allGoals: 'All',
     allGoalsDescription: 'Follow my progress from foundational learning and simulation debugging to building hardware, with the questions, experiments, and lessons from each stage.',
     goals: [

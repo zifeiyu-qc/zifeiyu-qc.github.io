@@ -84,6 +84,7 @@ export function getLearningItems(lang: Language) {
     if (!Array.isArray(orderedMedia)) fail('media must be an array');
     return {
       ...content[lang],
+      id: `learning-${content.goal.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${content.dateTime}`,
       summary: Array.isArray(content[lang].summary)
         ? content[lang].summary.join('\n')
         : content[lang].summary,

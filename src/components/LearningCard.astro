@@ -8,6 +8,7 @@ interface Props {
   summary: string;
   date: string;
   dateTime?: string;
+  id?: string;
   href?: string;
   image?: string;
   images?: readonly { src: string; alt: string }[];
@@ -20,6 +21,7 @@ interface Props {
   poster?: string;
   mediaAlt?: string;
   journal?: boolean;
+  preview?: boolean;
   goal?: string;
 }
 
@@ -30,6 +32,7 @@ const {
   summary,
   date,
   dateTime,
+  id,
   href,
   image,
   images,
@@ -39,6 +42,7 @@ const {
   poster,
   mediaAlt,
   journal = false,
+  preview = false,
   goal,
 } = Astro.props;
 const t = getTranslations(lang);
@@ -48,10 +52,15 @@ const noteMedia = media ?? [
   ...noteImages.map((item) => ({ ...item, type: 'image' as const })),
   ...noteVideos.map((item) => ({ ...item, type: 'video' as const })),
 ];
-const summaryParts = summary.split(/(θ\^\{\.\.\}|θ\^\{\.\}|_\{[A-Za-z0-9+*-]+\}|\^\{[A-Za-z0-9+*-]+\})/g);
+const previewText = summary.split(/\r?\n/, 1)[0].replace(/^\s*\d+[、.．]\s*/, '').trim();
+const previewLimit = lang === 'zh' ? 100 : 170;
+const visibleSummary = preview && previewText.length > previewLimit
+  ? `${Array.from(previewText).slice(0, previewLimit).join('').trimEnd()}…`
+  : preview ? previewText : summary;
+const summaryParts = visibleSummary.split(/(θ\^\{\.\.\}|θ\^\{\.\}|_\{[A-Za-z0-9+*-]+\}|\^\{[A-Za-z0-9+*-]+\})/g);
 ---
 
-<article class:list={['card', 'learning-card', { 'journal-entry': journal }] } data-learning-entry={journal ? goal : undefined}>
+<article id={journal ? id : undefined} class:list={['card', 'learning-card', { 'journal-entry': journal, 'learning-preview': preview }] } data-learning-entry={journal ? goal : undefined}>
   {journal && (
     <div class="learning-date">
       <time datetime={dateTime}>{date}</time>
