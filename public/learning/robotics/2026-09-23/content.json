@@ -1,0 +1,26 @@
+{
+  "goal": "robotics",
+  "dateTime": "2026-09-23",
+  "zh": {
+    "category": "机器人基础学",
+    "title": "抓取力学与准静态操作",
+    "summary": [
+      "1、摩擦锥：接触点的合力必须落在摩擦锥之内，接触才不会打滑；锥角由摩擦系数决定，是判断抓取是否打滑的基础。",
+      "2、形封闭（Form Closure）：仅依靠几何接触约束，不需要摩擦力，就能完全限制物体所有微小运动。即使接触面光滑，物体也无法移动或旋转。\n     • 二维物体至少需要 4 个无摩擦接触；三维物体至少需要 7 个无摩擦接触。\n     • 工程特点：稳定性极强，但对接触点数量要求高、结构复杂，工业中较少使用。",
+      "3、力封闭（Force Closure）：依靠夹爪施加的夹紧力，借助摩擦力限制物体运动，依赖摩擦。\n     • 日常两指夹爪抓取属于典型力封闭；夹紧力不足、摩擦不够就会打滑掉落。\n     • 判定条件：存在一组向内的接触力，所有接触合力都落在各自摩擦锥内。",
+      "4、力与运动自由度的二元性：约束力的方向，是物体不能产生运动的方向；物体能自由运动的方向，无法施加约束力。这是混合运动—力控制的理论基础。",
+      "5、准静态操作：低速操作，忽略惯性，只考虑静力学受力。机器人不需要抓起物体，可以直接推、拨、抵物体，实现滑动、翻转等操作。装配体运输也属于这类操作，需要判断物体是否会滑动或倾倒。"
+    ]
+  },
+  "en": {
+    "category": "Robotics Foundations",
+    "title": "Grasp Mechanics and Quasi-Static Manipulation",
+    "summary": [
+      "1. Friction cone: The resultant force at a contact must lie within its friction cone to prevent slipping. The cone angle is determined by the coefficient of friction, making it a basic tool for assessing grasp stability.",
+      "2. Form closure: Geometric contact constraints alone, without friction, completely prevent all infinitesimal motions of an object. Even with smooth contact surfaces, the object cannot translate or rotate.\n     • A planar object requires at least four frictionless contacts; a spatial object requires at least seven.\n     • Engineering trade-off: It offers strong stability but requires many contact points and a complex structure, so it is rarely used in industrial applications.",
+      "3. Force closure: Gripping forces and the resulting friction constrain the object's motion, so the grasp depends on friction.\n     • An everyday two-finger gripper is a typical example; insufficient grip force or friction can cause the object to slip and fall.\n     • Condition: A set of inward contact forces exists whose resultant at each contact lies within that contact's friction cone.",
+      "4. Duality of force and motion freedoms: A constraint force acts along a direction in which the object cannot move. Conversely, no constraint force can be applied along a direction in which the object is free to move. This is a theoretical basis for hybrid motion–force control.",
+      "5. Quasi-static manipulation: At low speeds, inertia is neglected and only static force balance is considered. Instead of lifting an object, a robot can push, nudge, or brace it to make it slide or rotate. Transporting an object on a support is another example; the analysis must determine whether it will slide or tip over."
+    ]
+  }
+}
