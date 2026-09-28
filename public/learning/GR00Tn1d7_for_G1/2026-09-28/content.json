@@ -1,0 +1,32 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-09-28",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "实现 PICO 遥操作并完成 G1 真机测试",
+    "summary": "打通了 PICO 头显到 G1 的遥操作控制流程。先在仿真环境中测试操作者动作到机器人动作的映射，检查控制链路与动作响应；随后将同一流程用于 G1 真机，完成初步遥操作验证。两个视频分别记录了仿真测试和真机测试，为后续示教数据采集与操作任务实验提供了基础。后续就等电机和相机采购了~"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "PICO Teleoperation and Initial G1 Robot Test",
+    "summary": "I established a PICO-based teleoperation workflow for the G1 humanoid robot. I first tested the mapping from the operator's movements to the robot's movements in simulation, checking the control pipeline and motion response. I then applied the same workflow to the physical G1 for an initial teleoperation test. The two videos document the simulation and real-robot stages, providing a foundation for future demonstration data collection and manipulation experiments."
+  },
+  "media": [
+    {
+      "type": "video",
+      "src": "videos/sim2sim.mp4",
+      "alt": {
+        "zh": "PICO 遥操作sim2sim",
+        "en": "PICO teleoperation in simulation"
+      }
+    },
+    {
+      "type": "video",
+      "src": "videos/sim2real.mp4",
+      "alt": {
+        "zh": "PICO 遥操作sim2real",
+        "en": "PICO teleoperation test on the physical G1"
+      }
+    }
+  ]
+}
