@@ -1,0 +1,48 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-10-11",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "完成夹爪制作与 G1 装机测试",
+    "summary": "这一阶段完成了相机支架的设计与制作，并对夹爪整体外观进行了优化；同时实现了夹爪控制逻辑。夹爪先通过离线测试，再安装到 G1 上进行动作验证，两项测试均顺利完成。接下来将联调整套数据采集系统，并把夹爪控制逻辑接入 G1 的全身控制流程，为后续遥操作和示教数据采集做准备。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Gripper Fabrication and Initial G1 Integration Test",
+    "summary": "At this stage, I designed and fabricated the camera mount, refined the gripper's overall appearance, and implemented its control logic. The gripper passed standalone tests and an initial motion test after being mounted on the G1. Next, I will bring up the complete data collection system and integrate gripper control into the G1 whole-body control pipeline to support teleoperation and demonstration data collection."
+  },
+  "media": [
+    {
+      "alt": {
+        "zh": "相机支架的设计模型",
+        "en": "model of the camera mount"
+      },
+      "type": "image",
+      "src": "images/camera_clamp.png"
+    },
+    {
+      "alt": {
+        "zh": "夹爪外观优化过程中的制作件",
+        "en": "Fabricated parts from the gripper design iteration"
+      },
+      "type": "image",
+      "src": "images/draft.jpg"
+    },
+    {
+      "alt": {
+        "zh": "相机与夹爪的装配实物",
+        "en": "Assembled gripper with its camera mount"
+      },
+      "type": "image",
+      "src": "images/dual_gripper.jpg"
+    },
+    {
+      "alt": {
+        "zh": "夹爪安装到 G1 后的动作测试",
+        "en": "Motion test of the gripper mounted on the G1"
+      },
+      "type": "video",
+      "src": "videos/gripper_on_G1.mp4"
+    }
+  ]
+}
