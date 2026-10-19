@@ -8,6 +8,14 @@ interface Props { lang: Lang; page: PageKey; }
 const { lang, page } = Astro.props;
 const t = getTranslations(lang);
 const metadata = page === 'home' ? t.home : t[page];
+// Keep the notes and translations intact; hide this track from both languages for now.
+const hiddenLearningGoals = new Set(['robotics']);
+const visibleLearningItems = (page === 'home' || page === 'learning')
+  ? t.learning.items.filter((item) => !hiddenLearningGoals.has(item.goal))
+  : [];
+const visibleLearningGoals = page === 'learning'
+  ? t.learning.goals.filter((goal) => !hiddenLearningGoals.has(goal.id))
+  : [];
 ---
 
 <BaseLayout lang={lang} page={page} title={metadata.title} description={'description' in metadata ? metadata.description : undefined}>
@@ -88,7 +96,7 @@ const metadata = page === 'home' ? t.home : t[page];
       </section>
       <section class="section container">
         <div class="section-heading"><div><p class="section-label">{t.home.recentLearningLabel}</p><h2>{t.home.recentLearning}</h2></div><a class="text-link" href={getLocalizedPath(lang, 'learning')}>{t.home.allNotes} <span aria-hidden="true">→</span></a></div>
-        <div class="card-grid">{t.learning.items.slice().sort((a, b) => b.dateTime.localeCompare(a.dateTime)).slice(0, 2).map((item) => <LearningCard lang={lang} preview {...item} href={`${getLocalizedPath(lang, 'learning')}#${item.id}`} />)}</div>
+        <div class="card-grid">{visibleLearningItems.slice().sort((a, b) => b.dateTime.localeCompare(a.dateTime)).slice(0, 2).map((item) => <LearningCard lang={lang} preview {...item} href={`${getLocalizedPath(lang, 'learning')}#${item.id}`} />)}</div>
       </section>
     </>
   )}
@@ -125,14 +133,14 @@ const metadata = page === 'home' ? t.home : t[page];
           </div>
           <div class="learning-goal-tabs" role="tablist" aria-label={t.learning.goalsAria} data-learning-tabs>
             <button class="learning-goal-tab" id="learning-tab-all" type="button" role="tab" aria-selected="true" aria-controls="learning-timeline" data-learning-tab="all" data-goal-description={t.learning.allGoalsDescription}><span class="learning-goal-tab-index" aria-hidden="true">00</span><span>{t.learning.allGoals}</span></button>
-            {t.learning.goals.map((goal, index) => (
+            {visibleLearningGoals.map((goal, index) => (
               <button class="learning-goal-tab" id={`learning-tab-${encodeURIComponent(goal.id)}`} type="button" role="tab" aria-selected="false" aria-controls="learning-timeline" tabindex="-1" data-learning-tab={goal.id} data-goal-description={goal.description}><span class="learning-goal-tab-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{goal.label}</span></button>
             ))}
           </div>
           <p class="learning-goal-description" id="learning-goal-description" aria-live="polite" aria-atomic="true">{t.learning.allGoalsDescription}</p>
         </div>
         <div class="learning-list" id="learning-timeline" role="tabpanel" aria-labelledby="learning-tab-all" aria-describedby="learning-goal-description" data-active-goal="all">
-          {t.learning.items.map((item) => <LearningCard lang={lang} journal {...item} />)}
+          {visibleLearningItems.map((item) => <LearningCard lang={lang} journal {...item} />)}
         </div>
       </section>
     </>
