@@ -7,9 +7,9 @@ const { lang, page } = Astro.props;
 const t = getTranslations(lang);
 const navigation: { page: PageKey; label: string }[] = [
   { page: 'home', label: t.nav.home },
+  { page: 'learning', label: t.nav.learning },
   { page: 'projects', label: t.nav.projects },
   { page: 'publications', label: t.nav.publications },
-  { page: 'learning', label: t.nav.learning },
 ];
 ---
 
