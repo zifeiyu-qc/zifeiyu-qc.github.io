@@ -1,0 +1,32 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-10-25",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "完成数据采集系统搭建与传输测试",
+    "summary": "完成 G1 数据采集系统的整体搭建，由于之前系统不支持的原因，最开始使用的是wifi无线传输数据，实际测试时发现丢包严重、时延高、抖动异常，无法满足后续遥操作和示教数据采集的需求。随后改用有线传输，测试结果显示传输稳定、时延低、抖动小，能够满足后续遥操作和示教数据采集的需求。本条目通过视频演示了两次传输测试的过程，为后续遥操作和示教数据采集提供参考。"
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Completed Data Collection System Setup and Transmission Tests",
+    "summary": "I completed the setup of the G1 data collection system. Due to limitations in the earlier system, I initially used Wi-Fi for data transmission. Testing revealed severe packet loss, high latency, and excessive jitter, making the wireless connection unsuitable for subsequent teleoperation and demonstration data collection. I then switched to a wired connection, which provided stable transmission with low latency and minimal jitter, meeting the requirements for these tasks. The two videos document the wireless and wired transmission tests, providing a reference for subsequent teleoperation and demonstration data collection."
+  },
+  "media": [
+    {
+      "alt": {
+        "zh": "无线传输测试",
+        "en": "wireless transmission test"
+      },
+      "type": "video",
+      "src": "videos/wifi.mp4"
+    },
+    {
+      "alt": {
+        "zh": "有线传输测试",
+        "en": "wired transmission test"
+      },
+      "type": "video",
+      "src": "videos/usb.mp4"
+    }
+  ]
+}
