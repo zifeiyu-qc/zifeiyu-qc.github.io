@@ -9,7 +9,8 @@ const { lang, page } = Astro.props;
 const t = getTranslations(lang);
 const metadata = page === 'home' ? t.home : t[page];
 // Keep the notes and translations intact; hide this track from both languages for now.
-const hiddenLearningGoals = new Set(['robotics']);
+const hiddenLearningGoals = new Set<string>([]);      // 开
+//const hiddenLearningGoals = new Set(['robotics']); // 关
 const visibleLearningItems = (page === 'home' || page === 'learning')
   ? t.learning.items.filter((item) => !hiddenLearningGoals.has(item.goal))
   : [];
