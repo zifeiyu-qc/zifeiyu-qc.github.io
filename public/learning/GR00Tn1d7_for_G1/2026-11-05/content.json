@@ -1,0 +1,40 @@
+{
+  "goal": "GR00T N1.7 for G1",
+  "dateTime": "2026-11-05",
+  "zh": {
+    "category": "GR00T N1.7 for G1",
+    "title": "打通 G1 数据采集、模型微调与部署流程",
+    "summary": [
+      "完成了从数据采集、GR00T N1.7 微调到 G1 真机部署的完整流程，并使用采集的 90 条数据进行了首次微调与测试。目前模型的任务执行效果仍有待提升，测试中也暴露出了全身控制与手臂动作之间的协调问题。",
+      "使用默认 SONIC 模型时，手臂向前伸出的过程中，上半身会为维持重心平衡而明显后倾，限制手臂的前伸范围，导致无法完成抓取。考虑到重新训练 SONIC 的成本，随后尝试部署 SONIC v1.1，但又出现了机器人静止站立时向前倾倒的问题。经过资料检索与排查，将问题定位到机器人硬件版本与模型的兼容性；更换为新版 G1 后，站立与动作控制恢复正常。",
+      "下一步计划拓展任务类型、采集更多数据，并继续评估微调后的任务执行效果。以下两个视频分别展示使用 90 条数据微调后的测试表现，以及 SONIC v1.1 的部署测试过程。"
+    ]
+  },
+  "en": {
+    "category": "GR00T N1.7 for G1",
+    "title": "Established the G1 Data Collection, Fine-Tuning, and Deployment Pipeline",
+    "summary": [
+      "I completed the workflow from data collection and GR00T N1.7 fine-tuning to deployment on the physical G1, using 90 collected recordings for the initial fine-tuning run and subsequent testing. Task performance still needs improvement, and testing also revealed coordination issues between whole-body control and arm movements.",
+      "With the default SONIC model, the upper body leaned noticeably backward to maintain balance as the arms reached forward. This limited the arms' forward reach and prevented the robot from completing grasps. Given the cost of retraining SONIC, I tried deploying SONIC v1.1, but the robot then began tipping forward while standing still. After reviewing available information and troubleshooting, I traced the issue to compatibility between the robot's hardware version and the model. Switching to a newer G1 restored normal standing and motion control.",
+      "Next, I plan to expand the range of tasks, collect more data, and continue evaluating task performance after fine-tuning. The two videos below show the test results after fine-tuning on 90 recordings and the SONIC v1.1 deployment test, respectively."
+    ]
+  },
+  "media": [
+    {
+      "alt": {
+        "zh": "使用 90 条数据微调 GR00T N1.7 后的真机测试表现",
+        "en": "Physical G1 test after fine-tuning GR00T N1.7 on 90 recordings"
+      },
+      "type": "video",
+      "src": "videos/test.mp4"
+    },
+    {
+      "alt": {
+        "zh": "SONIC v1.1 模型部署测试",
+        "en": "SONIC v1.1 deployment test"
+      },
+      "type": "video",
+      "src": "videos/sonicv1_1.mp4"
+    }
+  ]
+}
