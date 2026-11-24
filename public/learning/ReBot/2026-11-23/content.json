@@ -99,14 +99,6 @@
         "zh": "安装末端组件后的机械臂",
         "en": "Robot arm with the end effector installed"
       }
-    },
-    {
-      "type": "image",
-      "src": "images/10.jpg",
-      "alt": {
-        "zh": "组装后的 ReBot 机械臂",
-        "en": "Assembled ReBot robot arm"
-      }
     }
   ]
 }
