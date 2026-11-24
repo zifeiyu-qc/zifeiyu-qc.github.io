@@ -1,0 +1,112 @@
+{
+  "goal": "ReBot",
+  "dateTime": "2026-11-23",
+  "zh": {
+    "category": "ReBot",
+    "title": "组装 ReBot",
+    "summary": [
+      "这次记录 ReBot 机械臂的组装过程：从整理关节、连杆和安装零件开始，逐步完成底座、机械臂主体与末端夹爪的安装。",
+      "组装过程中，先将关节组件固定在底座上，再连接机械臂连杆，逐步搭建主体结构；随后整理末端组件并安装夹爪。通过动手组装，对机械臂的关节、连杆及末端执行器之间的连接关系有了更直观的认识。",
+      "下方照片按照组装记录的顺序展示了从零件准备到机械臂成形的过程。"
+    ]
+  },
+  "en": {
+    "category": "ReBot",
+    "title": "Assembling ReBot",
+    "summary": [
+      "This entry documents the assembly of the ReBot robot arm, from organizing the joint modules, links, and mounting parts to putting together the base, arm structure, and gripper.",
+      "The assembly began by securing a joint module to the base and connecting the arm links to build the main structure. The end-effector components were then prepared and the gripper installed. The hands-on process offered a clearer view of how the joints, links, and end effector connect.",
+      "The photos below follow the recorded assembly sequence, from the individual parts to the assembled robot arm."
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "images/0.jpg",
+      "alt": {
+        "zh": "机械臂关节组件",
+        "en": "Robot arm joint modules"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/1.jpg",
+      "alt": {
+        "zh": "待组装的机械臂零件",
+        "en": "Robot arm parts ready for assembly"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/2.jpg",
+      "alt": {
+        "zh": "安装在底座上的关节组件",
+        "en": "Joint module mounted on the base"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/3.jpg",
+      "alt": {
+        "zh": "机械臂连杆与安装工具",
+        "en": "Robot arm link and assembly tools"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/4.jpg",
+      "alt": {
+        "zh": "安装关节后的机械臂连杆",
+        "en": "Robot arm link with joint modules installed"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/5.jpg",
+      "alt": {
+        "zh": "机械臂连杆与底座组装",
+        "en": "Connecting the robot arm links to the base"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/6.jpg",
+      "alt": {
+        "zh": "组装中的机械臂主体",
+        "en": "Robot arm structure during assembly"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/7.jpg",
+      "alt": {
+        "zh": "末端组件与安装零件",
+        "en": "End-effector components and mounting parts"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/8.jpg",
+      "alt": {
+        "zh": "安装中的末端夹爪",
+        "en": "Gripper during installation"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/9.jpg",
+      "alt": {
+        "zh": "安装末端组件后的机械臂",
+        "en": "Robot arm with the end effector installed"
+      }
+    },
+    {
+      "type": "image",
+      "src": "images/10.jpg",
+      "alt": {
+        "zh": "组装后的 ReBot 机械臂",
+        "en": "Assembled ReBot robot arm"
+      }
+    }
+  ]
+}

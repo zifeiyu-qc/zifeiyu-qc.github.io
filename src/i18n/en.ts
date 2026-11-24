@@ -105,6 +105,7 @@ export const en = {
     allGoals: 'All',
     allGoalsDescription: 'Follow my progress from foundational learning and simulation debugging to building hardware, with the questions, experiments, and lessons from each stage.',
     goals: [
+      { id: 'ReBot', label: 'ReBot', description: 'Documenting the hands-on assembly of the ReBot robot arm, from preparing parts to connecting its joints, links, and end effector.' },
       { id: 'GR00T N1.7 for G1', label: 'GR00T N1.7 for G1', description: 'Exploring applications of GR00T on the G1 humanoid robot through gripper design and fabrication, whole-body control simulation in MuJoCo, and system debugging, while progressively building hands-on experience in robotic manipulation.' },
       { id: 'RoboShelf', label: 'RoboShelf', description: 'This track documents my progression from learning robotics from scratch to building a complete supermarket shelf-picking system that connects web-based ordering with robotic grasp execution. It also captures the technical challenges encountered and the solutions developed along the way. As this is an earlier project, some dates are approximate.' },
       { id: 'GR00T N1.6 for UR30', label: 'GR00T N1.6 for UR30', description: 'As part of my research, I deployed GR00T N1.6 on a UR30 robot arm to perform basic pick-and-place tasks. These brief notes document the practical experience I gained across the full pipeline, from data collection to real-robot deployment.' },
